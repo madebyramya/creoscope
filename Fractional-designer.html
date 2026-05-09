@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramya V Thalmann — Fractional Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-text-primary: #1a1a18;
+      --color-text-secondary: #5a5a57;
+      --color-text-tertiary: #8a8a85;
+      --color-bg-primary: #ffffff;
+      --color-bg-secondary: #f5f4f0;
+      --color-border-tertiary: rgba(0,0,0,0.10);
+      --color-border-secondary: rgba(0,0,0,0.18);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      color: var(--color-text-primary);
+      background: var(--color-bg-primary);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* Typography */
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 52px;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.75rem;
+    }
+
+    h1 em { font-style: italic; color: var(--color-text-secondary); }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .intro {
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--color-text-secondary);
+      max-width: 580px;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .body-text {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--color-text-secondary);
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 1.5rem;
+    }
+
+    .divider {
+      border: none;
+      border-top: 0.5px solid var(--color-border-tertiary);
+      margin: 2.75rem 0;
+    }
+
+    /* Model comparison grid */
+    .model-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--color-border-tertiary);
+      border: 0.5px solid var(--color-border-tertiary);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+
+    .model-cell { background: var(--color-bg-primary); padding: 1.25rem 1.5rem; }
+    .model-cell.header {
+      background: var(--color-bg-secondary);
+      font-size: 11px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      padding: 0.75rem 1.5rem;
+    }
+    .model-cell .label { font-size: 13px; color: var(--color-text-tertiary); margin-bottom: 4px; }
+    .model-cell .value { font-size: 14px; font-weight: 500; line-height: 1.5; }
+    .model-cell .value.good { color: #0F6E56; }
+    .model-cell .value.bad { color: #993C1D; }
+
+    /* Stats */
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 2rem 0; }
+    .stat-card { background: var(--color-bg-secondary); border-radius: var(--radius-md); padding: 1.25rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .stat-card .number { font-family: 'DM Serif Display', serif; font-size: 34px; font-weight: 400; display: block; margin-bottom: 6px; line-height: 1; }
+    .stat-card .desc { font-size: 12px; color: var(--color-text-tertiary); line-height: 1.45; }
+
+    /* Pills */
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
+    .pill {
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 0.5px solid var(--color-border-secondary);
+      color: var(--color-text-secondary);
+      background: var(--color-bg-secondary);
+    }
+
+    /* Commitment block */
+    .commitment-block {
+      border-left: 2px solid var(--color-border-secondary);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: var(--color-bg-secondary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .commitment-block p { font-size: 15px; line-height: 1.8; color: var(--color-text-secondary); font-weight: 300; }
+
+    /* Risk grid */
+    .risk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 2rem 0; }
+    .risk-card {
+      border: 0.5px solid var(--color-border-tertiary);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      background: var(--color-bg-primary);
+    }
+    .risk-card.featured { border-color: var(--color-border-secondary); background: var(--color-bg-secondary); }
+    .risk-card .risk-icon { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 0.75rem; display: block; }
+    .risk-card .risk-headline { font-size: 15px; font-weight: 500; margin-bottom: 0.5rem; line-height: 1.35; }
+    .risk-card .risk-body { font-size: 13px; line-height: 1.7; color: var(--color-text-secondary); font-weight: 300; }
+
+    /* Notice compare table */
+    .notice-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--color-border-tertiary);
+      border: 0.5px solid var(--color-border-tertiary);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+    .notice-col { background: var(--color-bg-primary); padding: 1rem 1.25rem; }
+    .notice-col.header { background: var(--color-bg-secondary); padding: 0.65rem 1.25rem; }
+    .notice-col .notice-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-tertiary); }
+    .notice-col .notice-name { font-size: 14px; color: var(--color-text-primary); }
+    .notice-col .notice-val { font-size: 14px; font-weight: 500; margin-top: 2px; }
+    .notice-col .notice-val.good { color: #0F6E56; }
+    .notice-col .notice-val.bad { color: #993C1D; }
+    .notice-col.highlight .notice-val { color: #0F6E56; }
+
+    /* FAQ */
+    .faq-item { padding: 1.5rem 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { font-size: 15px; font-weight: 500; margin-bottom: 0.6rem; line-height: 1.5; }
+    .faq-a { font-size: 14px; line-height: 1.85; color: var(--color-text-secondary); font-weight: 300; }
+
+    /* CTA */
+    .cta-block {
+      margin-top: 3rem;
+      padding: 2rem 2.25rem;
+      border: 0.5px solid var(--color-border-secondary);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .cta-text h3 { font-family: 'DM Serif Display', serif; font-size: 24px; font-weight: 400; margin-bottom: 4px; }
+    .cta-text p { font-size: 13px; color: var(--color-text-tertiary); }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      background: #E1F5EE;
+      color: #0F6E56;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #1D9E75; display: inline-block; flex-shrink: 0; }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 34px; }
+      .model-grid, .risk-grid, .notice-compare, .stat-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <p class="eyebrow">Ramya Thalmann · Creoscope</p>
+
+  <h1>The design partner<br><em>your product needs.</em></h1>
+
+  <p class="intro">I embed as your product designer — fully integrated into your team, participating in planning, working alongside your PMs and engineers, and taking full ownership of design from discovery through to implementation. You get a designer who owns the work end to end, without needing to be managed. The model is fractional — but the commitment isn't.</p>
+
+  <hr class="divider">
+
+  <!-- SECTION: The model -->
+  <p class="section-label">The model</p>
+  <h2>What "fractional" actually means</h2>
+  <p class="body-text">Fractional is not freelance. I don't wait for briefs, I don't deliver isolated assets, and I don't clock hours. I work the way a senior employee works, taking on the mental load of scoping, prioritising, and carrying design from discovery all the way through to implementation, just not at full-time capacity.</p>
+  <p class="body-text">Think of it as ~60% of a full-time senior designer: present on Slack, in planning sessions, in engineering syncs, in user research. Integrated, not adjacent.</p>
+
+  <div class="model-grid">
+    <div class="model-cell header">Traditional freelancer</div>
+    <div class="model-cell header">Fractional (this model)</div>
+    <div class="model-cell"><div class="label">Work structure</div><div class="value bad">Brief → delivery → done</div></div>
+    <div class="model-cell"><div class="label">Work structure</div><div class="value good">Ongoing ownership, embedded</div></div>
+    <div class="model-cell"><div class="label">Scope ownership</div><div class="value bad">Client defines the work</div></div>
+    <div class="model-cell"><div class="label">Scope ownership</div><div class="value good">I define, shape, and carry the work</div></div>
+    <div class="model-cell"><div class="label">Billing</div><div class="value bad">Hourly or per project</div></div>
+    <div class="model-cell"><div class="label">Billing</div><div class="value good">Monthly retainer, outcome-oriented</div></div>
+    <div class="model-cell"><div class="label">Team integration</div><div class="value bad">External vendor</div></div>
+    <div class="model-cell"><div class="label">Team integration</div><div class="value good">In Slack, in standups, in planning</div></div>
+    <div class="model-cell"><div class="label">Strategic input</div><div class="value bad">Rarely</div></div>
+    <div class="model-cell"><div class="label">Strategic input</div><div class="value good">Always. I help shape the roadmap.</div></div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION: Why it works -->
+  <p class="section-label">Why it works for early-stage startups</p>
+  <h2>Design that thinks for itself — and ships.</h2>
+  <p class="body-text">Most early-stage teams don't need more design hours. They need someone senior enough to figure out what to design, and experienced enough to carry it through without hand-holding. That combination of strategic ownership and hands-on execution is exactly what's hard to find, and what this model is built around.</p>
+  <p class="body-text">I've done this with multiple early-stage SaaS companies. I join, get up to speed fast, define what needs to be built and why, and take it all the way through to implementation without needing to be managed along the way.</p>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <span class="number">10+</span>
+      <span class="desc">Years of product design experience</span>
+    </div>
+    <div class="stat-card">
+      <span class="number">Forbes #1</span>
+      <span class="desc">My design rated #1 in analytics among all ATS platforms</span>
+    </div>
+    <div class="stat-card">
+      <span class="number">0→1</span>
+      <span class="desc">Products taken from concept to market-ready</span>
+    </div>
+  </div>
+
+  <p class="body-text">With 10+ years in product design and 8+ focused on B2B SaaS across fintech, HR tech, e-signing, and compliance, I'm currently leading product design at Deel. The analytics platform I designed from scratch at Teamtailor was recognised by Forbes as #1 in analytics and reporting among all applicant tracking systems in 2024. I've worked across early-stage startups and established products, so I know what it takes to ship in both environments and how to hit the ground running regardless of where a product is in its journey.</p>
+
+  <div class="pill-row">
+    <span class="pill">0→1 product design</span>
+    <span class="pill">B2B SaaS</span>
+    <span class="pill">Fintech & HR tech</span>
+    <span class="pill">Design systems</span>
+    <span class="pill">Research & strategy</span>
+    <span class="pill">Cross-functional collaboration</span>
+    <span class="pill">PM & engineering alignment</span>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION: Risk -->
+  <p class="section-label">Risk & commitment</p>
+  <h2>All the commitment you need.<br>None you don't.</h2>
+  <p class="body-text">The structure of this engagement is designed entirely around what gives you confidence. There's no fixed template. We agree on terms that feel right for you, and adjust them as the relationship grows. The goal is for you to feel as secure in this as you would with a full-time hire, with none of the rigidity that comes with one.</p>
+
+  <div class="risk-grid">
+    <div class="risk-card featured">
+      <span class="risk-icon">Getting started</span>
+      <div class="risk-headline">Start on whatever terms feel right</div>
+      <div class="risk-body">Short trial, month-to-month, or straight into a longer commitment. We structure the beginning around your comfort level, not a fixed formula.</div>
+    </div>
+    <div class="risk-card">
+      <span class="risk-icon">As confidence builds</span>
+      <div class="risk-headline">Full employment-equivalent terms if you want them</div>
+      <div class="risk-body">Whenever you want the security of a longer mutual commitment, matching what you'd have with a full-time hire, I'm fully open to that.</div>
+    </div>
+    <div class="risk-card">
+      <span class="risk-icon">My intention</span>
+      <div class="risk-headline">Long-term partnership, not a short engagement</div>
+      <div class="risk-body">I'm selective about who I work with because I'm looking to embed deeply and grow with a company over time, not rotate through clients.</div>
+    </div>
+  </div>
+
+  <p class="body-text">In practice, you get more flexibility than a traditional hire, with the same depth of commitment. The terms adapt to you. The quality and ownership don't.</p>
+
+  <div class="notice-compare">
+    <div class="notice-col header"><span class="notice-label">Arrangement</span></div>
+    <div class="notice-col header"><span class="notice-label">Commitment terms</span></div>
+    <div class="notice-col header"><span class="notice-label">Cost of getting it wrong</span></div>
+
+    <div class="notice-col"><span class="notice-name">Full-time employee</span></div>
+    <div class="notice-col"><span class="notice-val bad">Fixed, hard to change</span></div>
+    <div class="notice-col"><span class="notice-val bad">Very high</span></div>
+
+    <div class="notice-col"><span class="notice-name">Traditional freelancer</span></div>
+    <div class="notice-col"><span class="notice-val" style="color: var(--color-text-secondary);">Per project</span></div>
+    <div class="notice-col"><span class="notice-val" style="color: var(--color-text-secondary);">Low, but shallow work</span></div>
+
+    <div class="notice-col"><span class="notice-name" style="font-weight: 500;">Fractional (this model)</span></div>
+    <div class="notice-col"><span class="notice-val good">Flexible, adapts to you</span></div>
+    <div class="notice-col"><span class="notice-val good">Very low</span></div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION: Commitment -->
+  <p class="section-label">On commitment</p>
+  <h2>Transparency is the model, not a caveat.</h2>
+
+  <div class="commitment-block">
+    <p>I work with a small number of clients in parallel, and I'm upfront about that. It's a deliberate choice: working across different products keeps me sharper, more current, and full of perspective that a single-company environment rarely provides. The patterns I see across products, teams, and problems make me a better designer for each of them. You always know where you stand, and our engagement is built on outcomes, not presence.</p>
+  </div>
+
+  <p class="body-text">What you get is my full professional investment in understanding your product, your users, your technical constraints, and your roadmap. Experienced senior designers create outsized value through decisions, not hours logged.</p>
+
+  <hr class="divider">
+
+  <!-- SECTION: FAQ -->
+  <p class="section-label">FAQ</p>
+
+  <div class="faq-item">
+    <p class="faq-q">Isn't this just freelancing with a different name?</p>
+    <p class="faq-a">No. A freelancer waits for a brief, delivers a defined output, and moves on. I join your team. I'm in your planning sessions, I help define what needs to be designed and why, I work with your engineers through implementation, and I take responsibility for the design function, not just individual deliverables. The mental ownership is entirely different.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What if we need you and you're tied up with another client?</p>
+    <p class="faq-a">This rarely happens in practice because the model is async-friendly and output-oriented rather than time-bound. I'm available on Slack for quick decisions and present in the meetings that matter. I keep my client roster intentionally small and only take on engagements where I know I can deliver meaningfully.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Will you actually develop deep context about our product?</p>
+    <p class="faq-a">Yes, and this is where the fractional model differs from consulting. I'm not parachuting in for a sprint. I embed over months, building up institutional knowledge about your users, your technical architecture, your design decisions and why they were made. Over time I become one of the people who knows your product best.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What if this doesn't work out?</p>
+    <p class="faq-a">We agree on terms that feel right for you from the start, whether that's a short trial or jumping straight into a longer commitment. The structure is designed to give you confidence, not lock you in. I'm selective about who I work with precisely because I'm looking for this to work long-term.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What if we want more security that you won't just leave?</p>
+    <p class="faq-a">Commitment terms are fully flexible, including matching the notice period you'd have with a full-time employee, whenever that feels right. More importantly, I'm here because I want a long-term engagement. I'm selective about the companies I work with precisely because I'm not looking for short rotations. I'm looking for products I believe in and want to grow with.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">How is this better than hiring a full-time designer?</p>
+    <p class="faq-a">A full-time senior designer who can self-direct, own the design function, and work well with engineers is genuinely hard to find and expensive to hire. This model gives you exactly that, structured in a way that works for where you are right now, with flexibility to evolve as you grow.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">How does billing work?</p>
+    <p class="faq-a">A fixed monthly retainer, paid in advance. No hourly tracking, no project-by-project negotiation. You get consistent access to me and I plan my time around your needs. The fee reflects a roughly 60% capacity engagement relative to a full-time senior designer salary, making the value straightforward to benchmark.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Have you done this before?</p>
+    <p class="faq-a">Yes. I run Creoscope, my independent design practice, specifically structured around this model. I've worked this way with SaaS companies across e-signing, document management, and operations software, taking products from early concept through to production. It's not an experiment; it's how I work.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What happens if you eventually want to hire a full-time designer?</p>
+    <p class="faq-a">That's a great outcome and I'd help make it happen. I've helped startups hire and onboard designers before, so I know what good looks like at different stages. By the time you're ready, I'll know your product, your design system, and exactly what the role needs to look like. I can help you define the brief, review candidates, and ensure a smooth handover. The fractional model is often the best way to get to that point with strong foundations already in place.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">What does "integrated" actually look like day-to-day?</p>
+    <p class="faq-a">I join relevant planning and sprint ceremonies, I'm reachable on Slack for async questions and quick feedback, I attend product reviews and key stakeholder sessions, and I work directly with engineers during implementation. You won't need to brief me. I'll stay across what's happening and flag design decisions proactively.</p>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-text">
+      <h3>Let's talk about your product.</h3>
+      <p>ramya.thalmann@gmail.com · linkedin.com/in/ramya-v-t</p>
+    </div>
+    <span class="badge"><span class="dot"></span>Available for new engagements</span>
+  </div>
+
+</main>
+</body>
+</html>
