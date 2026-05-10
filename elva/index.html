@@ -348,6 +348,38 @@ body {
 .dp h4 { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
 .dp p { font-size: 11px; color: var(--ink-muted); line-height: 1.55; }
 
+/* ── Reveal slides (strategy-2, strategy-3) ── */
+.strat-mini-h {
+  font-size: clamp(22px, 2.5vw, 34px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 28px;
+  line-height: 1.1;
+}
+.pillar.reveal-item {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.5s cubic-bezier(0.22,1,0.36,1),
+              transform 0.55s cubic-bezier(0.22,1,0.36,1);
+}
+.pillar.reveal-item.shown { opacity: 1; transform: none; }
+.dp.reveal-item { opacity: 0; transition: opacity 0.45s cubic-bezier(0.22,1,0.36,1); }
+.dp.reveal-item.shown { opacity: 1; }
+.reveal-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
 
 /* ══════════════════════════════════
    SLIDE 4 — BENTO (WHAT ELVA FEELS LIKE)
@@ -1009,6 +1041,7 @@ body {
   <button class="nav-dot" data-i="7"></button>
   <button class="nav-dot" data-i="8"></button>
   <button class="nav-dot" data-i="9"></button>
+  <button class="nav-dot" data-i="10"></button>
 </nav>
 <div class="slide-counter" id="counter">1 / 10</div>
 
@@ -1120,15 +1153,22 @@ body {
 </section>
 
 
-<!-- ══ SLIDE 3 — STRATEGY ══ -->
-<section class="slide" id="s-strategy">
+<!-- ══ SLIDE 3 — STRATEGY 1: NORTH STAR ══ -->
+<section class="slide" id="s-strategy-1">
   <div class="eyebrow">02 — Where to move next</div>
   <div class="strat-header">
     <h2 class="strat-h">A direction, not a<br>prescription. <span>Here's<br>how we think about it.</span></h2>
     <div class="strat-quote">"The product should feel as considered as the service Elva provides. Every screen should feel like someone thought carefully about this moment."</div>
   </div>
+</section>
+
+
+<!-- ══ SLIDE 4 — STRATEGY 2: THREE PILLARS ══ -->
+<section class="slide" id="s-strategy-2">
+  <div class="eyebrow">02 — Where to move next</div>
+  <h2 class="strat-mini-h">Three pillars.</h2>
   <div class="pillars">
-    <div class="pillar">
+    <div class="pillar reveal-item">
       <div class="pillar-icon" style="background:var(--orange-light)">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="#E8622A" stroke-width="1.3"/><path d="M7 4.5V7l1.5 1.5" stroke="#E8622A" stroke-width="1.3" stroke-linecap="round"/></svg>
       </div>
@@ -1136,7 +1176,7 @@ body {
       <p>Transitions and state changes that guide rather than distract. Revolut-level intentionality — purposeful, not decorative.</p>
       <span class="pillar-tag" style="background:var(--orange-light);color:var(--orange)">Interaction design</span>
     </div>
-    <div class="pillar">
+    <div class="pillar reveal-item">
       <div class="pillar-icon" style="background:#E8F5E9">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 11C2 8.8 4.2 7 7 7s5 1.8 5 4" stroke="#16A34A" stroke-width="1.3" stroke-linecap="round"/><circle cx="7" cy="4" r="2.2" stroke="#16A34A" stroke-width="1.3"/></svg>
       </div>
@@ -1144,7 +1184,7 @@ body {
       <p>People are not case numbers. Lead with the person — their name, their progress, their next step — not a generic task list.</p>
       <span class="pillar-tag" style="background:#E8F5E9;color:#16A34A">Information architecture</span>
     </div>
-    <div class="pillar">
+    <div class="pillar reveal-item">
       <div class="pillar-icon" style="background:#EDE9FE">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="4" height="4" rx="1" stroke="#7C3AED" stroke-width="1.3"/><rect x="8.5" y="1.5" width="4" height="4" rx="1" stroke="#7C3AED" stroke-width="1.3"/><rect x="1.5" y="8.5" width="4" height="4" rx="1" stroke="#7C3AED" stroke-width="1.3"/><rect x="8.5" y="8.5" width="4" height="4" rx="1" stroke="#7C3AED" stroke-width="1.3"/></svg>
       </div>
@@ -1153,12 +1193,21 @@ body {
       <span class="pillar-tag" style="background:#EDE9FE;color:#7C3AED">Design system</span>
     </div>
   </div>
+  <div class="reveal-hint">click or press → to reveal</div>
+</section>
+
+
+<!-- ══ SLIDE 5 — STRATEGY 3: FOUR PRINCIPLES ══ -->
+<section class="slide" id="s-strategy-3">
+  <div class="eyebrow">02 — Where to move next</div>
+  <h2 class="strat-mini-h">Four principles.</h2>
   <div class="principles">
-    <div class="dp"><div class="dp-n">01</div><h4>Show, don't list</h4><p>Replace flat text with visual progress. The journey should be felt, not just read.</p></div>
-    <div class="dp"><div class="dp-n">02</div><h4>Calm complexity</h4><p>Relocation is stressful. The UI should reduce anxiety, not mirror it.</p></div>
-    <div class="dp"><div class="dp-n">03</div><h4>Earn every moment</h4><p>Micro-interactions only where they add meaning — never for decoration.</p></div>
-    <div class="dp"><div class="dp-n">04</div><h4>One language</h4><p>A token-based system so every new screen inherits the craft automatically.</p></div>
+    <div class="dp reveal-item"><div class="dp-n">01</div><h4>Show, don't list</h4><p>Replace flat text with visual progress. The journey should be felt, not just read.</p></div>
+    <div class="dp reveal-item"><div class="dp-n">02</div><h4>Calm complexity</h4><p>Relocation is stressful. The UI should reduce anxiety, not mirror it.</p></div>
+    <div class="dp reveal-item"><div class="dp-n">03</div><h4>Earn every moment</h4><p>Micro-interactions only where they add meaning — never for decoration.</p></div>
+    <div class="dp reveal-item"><div class="dp-n">04</div><h4>One language</h4><p>A token-based system so every new screen inherits the craft automatically.</p></div>
   </div>
+  <div class="reveal-hint">click or press → to reveal</div>
 </section>
 
 
@@ -1603,9 +1652,40 @@ let bentoFired = false;
 let tlFired    = false;
 
 const DARK_SLIDES = new Set(['s-next','s-ex-bk-new']);
+const REVEAL_IDS  = ['s-strategy-2', 's-strategy-3'];
+const revealState = { 's-strategy-2': 0, 's-strategy-3': 0 };
+
+function revealItems(slideId) {
+  return Array.from(document.getElementById(slideId).querySelectorAll('.reveal-item'));
+}
+function updateHint(slideId) {
+  const hint = document.querySelector('#' + slideId + ' .reveal-hint');
+  if (!hint) return;
+  const total = revealItems(slideId).length;
+  const shown = revealState[slideId];
+  hint.textContent = shown >= total ? 'press → for next slide' : 'click or press → to reveal';
+}
+function resetReveal(slideId) {
+  revealItems(slideId).forEach(el => el.classList.remove('shown'));
+  revealState[slideId] = 0;
+  updateHint(slideId);
+}
+function tryReveal(slideId) {
+  const items = revealItems(slideId);
+  const n = revealState[slideId];
+  if (n < items.length) {
+    items[n].classList.add('shown');
+    revealState[slideId]++;
+    updateHint(slideId);
+    return true;
+  }
+  return false;
+}
 
 function goTo(n) {
   n = Math.max(0, Math.min(slides.length - 1, n));
+  const sid = slides[n]?.id;
+  if (REVEAL_IDS.includes(sid)) resetReveal(sid);
   slides[n].scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -1622,8 +1702,8 @@ function setSlide(n) {
   });
   counter.style.color = onDark ? 'rgba(255,255,255,0.3)' : 'var(--ink-faint)';
 
-  if (n === 3 && !bentoFired) { bentoFired = true; fireBento(); }
-  if (n === 5 && !tlFired)    { tlFired = true;    fireTl();    }
+  if (n === 6 && !bentoFired) { bentoFired = true; fireBento(); }
+  if (n === 8 && !tlFired)    { tlFired = true;    fireTl();    }
 }
 
 function fireBento() {
@@ -1689,10 +1769,23 @@ slides.forEach(s => obs.observe(s));
 // Keyboard nav
 document.addEventListener('keydown', e => {
   if (['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)) {
-    e.preventDefault(); goTo(current + 1);
+    e.preventDefault();
+    const sid = slides[current]?.id;
+    if (REVEAL_IDS.includes(sid) && tryReveal(sid)) return;
+    goTo(current + 1);
   } else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key)) {
     e.preventDefault(); goTo(current - 1);
   }
+});
+
+// Click-to-reveal on reveal slides
+REVEAL_IDS.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', () => {
+    if (slides[current]?.id === id) {
+      if (!tryReveal(id)) goTo(current + 1);
+    }
+  });
 });
 
 // Dot clicks
