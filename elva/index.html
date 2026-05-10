@@ -622,6 +622,8 @@ body {
 .v1-tbd  { background:rgba(0,0,0,0.05); color:var(--ink-faint); }
 
 /* v1 "before" bookings */
+.v1-bk-screenshot { flex:1; overflow:hidden; background:white; display:flex; align-items:flex-start; }
+.v1-bk-screenshot img { width:100%; height:100%; object-fit:cover; object-position:top left; display:block; }
 .v1-bk { padding:20px 22px; background:white; overflow-y:auto; height:100%; display:flex; flex-direction:column; gap:10px; }
 .v1-bk-title { font-size:16px; font-weight:600; color:var(--ink); letter-spacing:-0.02em; }
 .v1-bk-banner { background:rgba(0,0,0,0.03); border:1px solid var(--border-med); border-radius:var(--r-lg); padding:10px 13px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
@@ -877,12 +879,35 @@ body {
 .cal-venue-dot { width:6px; height:6px; border-radius:50%; background:var(--s-blue); flex-shrink:0; }
 .cal-footer { background:var(--orange-light); border-top:1px solid rgba(232,98,42,0.1); padding:7px 13px; font-size:10px; color:var(--orange); font-weight:500; display:flex; align-items:center; justify-content:space-between; }
 .cal-footer-link { font-size:10px; color:var(--orange); font-weight:600; }
+/* Biometric card — 3-col redesign */
+.cal-hdr-left { display:flex; align-items:center; gap:9px; }
+.cal-org-mark { width:28px; height:28px; border-radius:6px; background:var(--cream-light); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; overflow:hidden; flex-shrink:0; }
+.cal-org-mark img { width:22px; height:auto; display:block; }
+.cal-3col { display:grid; grid-template-columns:1fr 1fr 1fr; }
+.cal-3col-sec { padding:10px 12px; }
+.cal-3col-sec + .cal-3col-sec { border-left:1px solid var(--border); }
+.cal-3col-label { font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-muted); margin-bottom:7px; }
+.cal-mini-grid { display:grid; grid-template-columns:repeat(7,14px); gap:1px; }
+.cal-mini-wd { font-size:6px; font-weight:600; color:var(--ink-faint); text-align:center; padding-bottom:2px; }
+.cal-mini-d { font-size:7px; text-align:center; color:var(--ink-muted); width:14px; height:14px; display:flex; align-items:center; justify-content:center; border-radius:50%; }
+.cal-mini-d.faint { color:transparent; }
+.cal-mini-d.sel { background:var(--orange); color:white; font-weight:700; }
+.cal-when-time { font-size:20px; font-weight:700; color:var(--ink); letter-spacing:-0.04em; margin-top:7px; line-height:1; }
+.cal-when-date { font-size:9px; color:var(--ink-muted); margin-top:3px; }
+.cal-map-wrap { border-radius:var(--r-md); overflow:hidden; margin-bottom:7px; border:1px solid var(--border); }
+.cal-map-svg { width:100%; display:block; }
+.cal-addr { font-size:9px; color:var(--ink-muted); line-height:1.5; }
+.cal-action-btn { width:100%; display:flex; align-items:center; gap:7px; background:var(--cream-light); border:1px solid var(--border); border-radius:var(--r-md); padding:8px 10px; font-size:10px; font-weight:600; color:var(--ink); font-family:var(--sans); cursor:pointer; text-align:left; margin-bottom:6px; transition:background 0.15s,border-color 0.15s; }
+.cal-action-btn:last-child { margin-bottom:0; }
+.cal-action-btn:hover { background:rgba(232,98,42,0.05); border-color:rgba(232,98,42,0.3); }
+.cal-action-btn svg { flex-shrink:0; }
 
 /* Boarding pass */
 .bp-card { background:white; border-radius:var(--r-xl); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow-md); }
-.bp-top { display:flex; align-items:center; justify-content:space-between; padding:9px 13px; background:var(--ink); }
+.bp-top { display:flex; align-items:center; justify-content:space-between; padding:9px 13px; background:#0c0243; }
 .bp-airline { display:flex; align-items:center; gap:7px; }
-.bp-ay-mark { width:22px; height:22px; border-radius:5px; background:#1E3A8A; display:flex; align-items:center; justify-content:center; font-size:7px; font-weight:700; color:#93C5FD; letter-spacing:0; }
+.bp-ay-mark { width:28px; height:28px; border-radius:5px; background:white; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.bp-ay-mark img { width:22px; height:auto; display:block; }
 .bp-al-name { font-size:11px; font-weight:600; color:white; }
 .bp-fcode { font-size:9px; color:rgba(255,255,255,0.4); margin-top:1px; }
 .bp-class-tag { font-size:9px; font-weight:600; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.08em; }
@@ -1421,7 +1446,7 @@ body {
   <div class="dark-hdr">
     <div class="eyebrow">04 — Example 2 of 2</div>
     <h2>My bookings. <span>Redesigned.</span></h2>
-    <p>Calendar-first appointment view, boarding pass card, and a flight route map — all within Elva's existing brand.</p>
+    <p>Calendar-first appointment view and boarding pass card — all within Elva's existing brand.</p>
   </div>
   <div style="display:flex;flex-direction:column;gap:7px;max-width:860px;width:100%;margin:0 auto;">
     <div class="ex-col-label">↳ My bookings</div>
@@ -1451,31 +1476,71 @@ body {
           <!-- Calendar appointment card -->
           <div class="cal-card">
             <div class="cal-card-hdr">
-              <div class="cal-card-hdr-l">
-                <h4>Biometric Appointment</h4>
-                <p>VFS Global · Delhi, India</p>
+              <div class="cal-hdr-left">
+                <div class="cal-org-mark"><img src="vfs-logo.png" alt="VFS Global"></div>
+                <div class="cal-card-hdr-l">
+                  <h4>Biometric Appointment</h4>
+                  <p>VFS Global · Delhi, India</p>
+                </div>
               </div>
               <div class="cal-confirmed">
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#16A34A" stroke-width="1.2"/><path d="M2.8 5l1.5 1.5 2.7-2.7" stroke="#16A34A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Confirmed
               </div>
             </div>
-            <div class="cal-body">
-              <div class="cal-widget">
+            <div class="cal-3col">
+              <!-- When -->
+              <div class="cal-3col-sec">
+                <div class="cal-3col-label">When</div>
                 <div class="cal-month-label">May 2026</div>
-                <div class="cal-grid">
-                  <div class="cal-wd">Mo</div><div class="cal-wd">Tu</div><div class="cal-wd">We</div><div class="cal-wd">Th</div><div class="cal-wd">Fr</div><div class="cal-wd">Sa</div><div class="cal-wd">Su</div>
-                  <div class="cal-d faint"></div><div class="cal-d faint"></div><div class="cal-d faint"></div><div class="cal-d faint"></div><div class="cal-d">1</div><div class="cal-d">2</div><div class="cal-d">3</div>
-                  <div class="cal-d">4</div><div class="cal-d">5</div><div class="cal-d">6</div><div class="cal-d">7</div><div class="cal-d">8</div><div class="cal-d">9</div><div class="cal-d">10</div>
-                  <div class="cal-d">11</div><div class="cal-d">12</div><div class="cal-d">13</div><div class="cal-d">14</div><div class="cal-d">15</div><div class="cal-d">16</div><div class="cal-d">17</div>
-                  <div class="cal-d">18</div><div class="cal-d">19</div><div class="cal-d">20</div><div class="cal-d">21</div><div class="cal-d sel">22</div><div class="cal-d">23</div><div class="cal-d">24</div>
-                  <div class="cal-d">25</div><div class="cal-d">26</div><div class="cal-d">27</div><div class="cal-d">28</div><div class="cal-d">29</div><div class="cal-d">30</div><div class="cal-d">31</div>
+                <div class="cal-mini-grid">
+                  <div class="cal-mini-wd">M</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">W</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">F</div><div class="cal-mini-wd">S</div><div class="cal-mini-wd">S</div>
+                  <div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d">1</div><div class="cal-mini-d">2</div><div class="cal-mini-d">3</div>
+                  <div class="cal-mini-d">4</div><div class="cal-mini-d">5</div><div class="cal-mini-d">6</div><div class="cal-mini-d">7</div><div class="cal-mini-d">8</div><div class="cal-mini-d">9</div><div class="cal-mini-d">10</div>
+                  <div class="cal-mini-d">11</div><div class="cal-mini-d">12</div><div class="cal-mini-d">13</div><div class="cal-mini-d">14</div><div class="cal-mini-d">15</div><div class="cal-mini-d">16</div><div class="cal-mini-d">17</div>
+                  <div class="cal-mini-d">18</div><div class="cal-mini-d">19</div><div class="cal-mini-d">20</div><div class="cal-mini-d">21</div><div class="cal-mini-d sel">22</div><div class="cal-mini-d">23</div><div class="cal-mini-d">24</div>
+                  <div class="cal-mini-d">25</div><div class="cal-mini-d">26</div><div class="cal-mini-d">27</div><div class="cal-mini-d">28</div><div class="cal-mini-d">29</div><div class="cal-mini-d">30</div><div class="cal-mini-d">31</div>
                 </div>
+                <div class="cal-when-time">02:00</div>
+                <div class="cal-when-date">Friday, 22 May 2026</div>
               </div>
-              <div class="cal-time-sec">
-                <div class="cal-time-big">02:00</div>
-                <div class="cal-time-ampm">Friday, 22 May 2026</div>
-                <div class="cal-venue-row"><div class="cal-venue-dot"></div>VFS Global, Delhi</div>
+              <!-- Where -->
+              <div class="cal-3col-sec">
+                <div class="cal-3col-label">Where</div>
+                <div class="cal-map-wrap">
+                  <svg class="cal-map-svg" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="120" height="80" fill="#eae6dc"/>
+                    <rect x="0" y="32" width="120" height="8" fill="#f5f1e8"/>
+                    <rect x="0" y="58" width="120" height="6" fill="#f5f1e8"/>
+                    <rect x="44" y="0" width="8" height="80" fill="#f5f1e8"/>
+                    <rect x="78" y="0" width="6" height="80" fill="#f5f1e8"/>
+                    <rect x="2" y="2" width="40" height="28" rx="2" fill="#d8d3c7"/>
+                    <rect x="54" y="2" width="22" height="28" rx="2" fill="#d8d3c7"/>
+                    <rect x="86" y="2" width="32" height="28" rx="2" fill="#d8d3c7"/>
+                    <rect x="2" y="42" width="40" height="14" rx="2" fill="#d8d3c7"/>
+                    <rect x="54" y="42" width="22" height="14" rx="2" fill="#d8d3c7"/>
+                    <rect x="86" y="42" width="32" height="14" rx="2" fill="#d8d3c7"/>
+                    <rect x="2" y="66" width="40" height="12" rx="2" fill="#d8d3c7"/>
+                    <rect x="54" y="66" width="22" height="12" rx="2" fill="#d8d3c7"/>
+                    <rect x="86" y="66" width="32" height="12" rx="2" fill="#d8d3c7"/>
+                    <circle cx="48" cy="36" r="11" fill="#E8622A" opacity="0.12"/>
+                    <path d="M48 24 C44.1 24 41 27.1 41 31 C41 36.2 48 44 48 44 C48 44 55 36.2 55 31 C55 27.1 51.9 24 48 24Z" fill="#E8622A"/>
+                    <circle cx="48" cy="31" r="3" fill="white"/>
+                  </svg>
+                </div>
+                <div class="cal-addr">VFS Global Centre<br>Connaught Place<br>New Delhi, India</div>
+              </div>
+              <!-- Quick actions -->
+              <div class="cal-3col-sec">
+                <div class="cal-3col-label">Quick actions</div>
+                <button class="cal-action-btn">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="1.5" stroke="#E8622A" stroke-width="1.2"/><path d="M4 2V1M10 2V1" stroke="#E8622A" stroke-width="1.2" stroke-linecap="round"/><path d="M1 5.5h12" stroke="#E8622A" stroke-width="1.2"/><rect x="4" y="8" width="2" height="2" rx="0.5" fill="#E8622A"/></svg>
+                  Add to calendar
+                </button>
+                <button class="cal-action-btn">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5C3 8 7 13 7 13C7 13 11 8 11 5C11 2.8 9.2 1 7 1Z" stroke="#E8622A" stroke-width="1.2" stroke-linejoin="round"/><circle cx="7" cy="5" r="1.5" fill="#E8622A"/></svg>
+                  Open in Maps
+                </button>
               </div>
             </div>
             <div class="cal-footer">
@@ -1488,7 +1553,7 @@ body {
           <div class="bp-card">
             <div class="bp-top">
               <div class="bp-airline">
-                <div class="bp-ay-mark">AY</div>
+                <div class="bp-ay-mark"><img src="finnair-logo.png" alt="Finnair"></div>
                 <div><div class="bp-al-name">Finnair</div><div class="bp-fcode">AYAY1234</div></div>
               </div>
               <div class="bp-class-tag">Economy</div>
@@ -1517,35 +1582,7 @@ body {
             <div class="bp-footer">
               <div class="bp-pax-block"><div class="bp-pax-label">Passenger</div><div class="bp-pax">Ramya Thalmann</div></div>
               <div class="bp-date-block"><div class="bp-date-label">Date</div><div class="bp-date-val">Fri, Jun 5 2026</div></div>
-              <div class="bp-barcode">
-                <div style="height:100%"></div><div style="height:60%"></div><div style="height:85%"></div><div style="height:100%"></div><div style="height:45%"></div><div style="height:90%"></div><div style="height:70%"></div><div style="height:100%"></div><div style="height:55%"></div><div style="height:80%"></div><div style="height:100%"></div><div style="height:65%"></div><div style="height:40%"></div><div style="height:95%"></div><div style="height:100%"></div><div style="height:50%"></div><div style="height:75%"></div><div style="height:100%"></div>
-              </div>
             </div>
-          </div>
-
-          <!-- Route map -->
-          <div class="route-map-card">
-            <div class="route-map-label">Flight route · DEL → HEL</div>
-            <svg class="route-map-svg" viewBox="0 0 300 90" height="90">
-              <defs>
-                <pattern id="dotgrid" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
-                  <circle cx="5" cy="5" r="0.7" fill="rgba(255,255,255,0.07)"/>
-                </pattern>
-              </defs>
-              <rect width="300" height="90" fill="url(#dotgrid)"/>
-              <!-- Route arc -->
-              <path d="M 220 72 Q 60 -30 60 26" stroke="#E8622A" stroke-width="1.5" stroke-dasharray="4,4" fill="none" opacity="0.7"/>
-              <!-- Animated plane -->
-              <g style="offset-path:path('M 220 72 Q 60 -30 60 26');animation:planeFly 3s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center">
-                <text font-size="11" fill="white" x="-6" y="5">✈</text>
-              </g>
-              <!-- City dots -->
-              <circle cx="220" cy="72" r="4" fill="#E8622A"/><circle cx="220" cy="72" r="8" stroke="#E8622A" stroke-width="1" fill="none" opacity="0.3"/>
-              <circle cx="60" cy="26" r="4" fill="#E8622A"/><circle cx="60" cy="26" r="8" stroke="#E8622A" stroke-width="1" fill="none" opacity="0.3"/>
-              <!-- Labels -->
-              <text x="230" y="76" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif">DEL</text>
-              <text x="68" y="30" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Inter,sans-serif">HEL</text>
-            </svg>
           </div>
 
         </div><!-- /bk-new-main -->
@@ -1560,7 +1597,7 @@ body {
   <div class="ba-hdr">
     <div class="eyebrow">04 — Example 2 of 2</div>
     <h2>Bookings. <span>Before / After.</span></h2>
-    <p>From a flat list to a calendar, boarding pass, and route map.</p>
+    <p>From a flat list to a calendar and boarding pass.</p>
     <div class="ba-hint">
       <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M10 1l4 4-4 4M6 1L2 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Drag the handle
@@ -1587,33 +1624,8 @@ body {
             <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 12C2 9.5 4.5 7.5 7.5 7.5S13 9.5 13 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="7.5" cy="4.5" r="2.5" stroke="currentColor" stroke-width="1.3"/></svg>Wellbeing hub</div>
             <div class="sb-bottom"><div class="sb-av">RT</div><div><div class="sb-uname">Ramya T.</div><div class="sb-urole">Relocating to Finland</div></div></div>
           </div>
-          <div class="v1-bk">
-            <div class="v1-bk-title">My bookings</div>
-            <div class="v1-bk-banner">
-              <div class="v1-bk-banner-text"><h4>Need to change your booking?</h4><p>Contact us for urgent rescheduling.</p></div>
-              <button class="v1-bk-btn">Contact us →</button>
-            </div>
-            <div class="v1-bk-filters">
-              <div class="v1-bk-filter on">All</div>
-              <div class="v1-bk-filter">Travel</div>
-              <div class="v1-bk-filter">Accommodation</div>
-            </div>
-            <div class="v1-bk-card">
-              <div class="v1-bk-card-title">Biometric appointment (VFS)</div>
-              <div class="v1-bk-row"><span class="v1-bk-key">Date</span><span class="v1-bk-val">Friday 22 May 2026</span></div>
-              <div class="v1-bk-row"><span class="v1-bk-key">Time</span><span class="v1-bk-val">02:00</span></div>
-              <div class="v1-bk-row"><span class="v1-bk-key">Location</span><span class="v1-bk-val">Delhi, India</span></div>
-              <div class="v1-bk-row"><span class="v1-bk-key">With</span><span class="v1-bk-val">VFS Global</span></div>
-            </div>
-            <div class="v1-bk-flight">
-              <div class="v1-bk-flight-top"><span class="v1-bk-route">DEL → HEL</span><span class="v1-bk-when">5 Jun, 16:30</span></div>
-              <div class="v1-bk-flight-body">
-                <div class="v1-bk-flight-row"><span class="v1-bk-flight-key">Airline</span><span class="v1-bk-flight-val">Finnair</span></div>
-                <div class="v1-bk-flight-row"><span class="v1-bk-flight-key">Flight</span><span class="v1-bk-flight-val">AYAY1234</span></div>
-                <div class="v1-bk-flight-row"><span class="v1-bk-flight-key">Duration</span><span class="v1-bk-flight-val">4h 15m Direct</span></div>
-                <div class="v1-bk-flight-row"><span class="v1-bk-flight-key">Passenger</span><span class="v1-bk-flight-val">Ramya Thalmann</span></div>
-              </div>
-            </div>
+          <div class="v1-bk-screenshot">
+            <img src="My booking original.png" alt="My bookings — original UI">
           </div>
         </div>
       </div>
@@ -1643,32 +1655,69 @@ body {
             <div class="bk-new-sub">2 upcoming · next in 12 days</div>
             <div class="cal-card">
               <div class="cal-card-hdr">
-                <div class="cal-card-hdr-l"><h4>Biometric Appointment</h4><p>VFS Global · Delhi, India</p></div>
+                <div class="cal-hdr-left">
+                  <div class="cal-org-mark"><img src="vfs-logo.png" alt="VFS Global"></div>
+                  <div class="cal-card-hdr-l"><h4>Biometric Appointment</h4><p>VFS Global · Delhi, India</p></div>
+                </div>
                 <div class="cal-confirmed"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#16A34A" stroke-width="1.2"/><path d="M2.8 5l1.5 1.5 2.7-2.7" stroke="#16A34A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Confirmed</div>
               </div>
-              <div class="cal-body">
-                <div class="cal-widget">
+              <div class="cal-3col">
+                <div class="cal-3col-sec">
+                  <div class="cal-3col-label">When</div>
                   <div class="cal-month-label">May 2026</div>
-                  <div class="cal-grid">
-                    <div class="cal-wd">Mo</div><div class="cal-wd">Tu</div><div class="cal-wd">We</div><div class="cal-wd">Th</div><div class="cal-wd">Fr</div><div class="cal-wd">Sa</div><div class="cal-wd">Su</div>
-                    <div class="cal-d faint"></div><div class="cal-d faint"></div><div class="cal-d faint"></div><div class="cal-d faint"></div><div class="cal-d">1</div><div class="cal-d">2</div><div class="cal-d">3</div>
-                    <div class="cal-d">4</div><div class="cal-d">5</div><div class="cal-d">6</div><div class="cal-d">7</div><div class="cal-d">8</div><div class="cal-d">9</div><div class="cal-d">10</div>
-                    <div class="cal-d">11</div><div class="cal-d">12</div><div class="cal-d">13</div><div class="cal-d">14</div><div class="cal-d">15</div><div class="cal-d">16</div><div class="cal-d">17</div>
-                    <div class="cal-d">18</div><div class="cal-d">19</div><div class="cal-d">20</div><div class="cal-d">21</div><div class="cal-d sel">22</div><div class="cal-d">23</div><div class="cal-d">24</div>
-                    <div class="cal-d">25</div><div class="cal-d">26</div><div class="cal-d">27</div><div class="cal-d">28</div><div class="cal-d">29</div><div class="cal-d">30</div><div class="cal-d">31</div>
+                  <div class="cal-mini-grid">
+                    <div class="cal-mini-wd">M</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">W</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">F</div><div class="cal-mini-wd">S</div><div class="cal-mini-wd">S</div>
+                    <div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d">1</div><div class="cal-mini-d">2</div><div class="cal-mini-d">3</div>
+                    <div class="cal-mini-d">4</div><div class="cal-mini-d">5</div><div class="cal-mini-d">6</div><div class="cal-mini-d">7</div><div class="cal-mini-d">8</div><div class="cal-mini-d">9</div><div class="cal-mini-d">10</div>
+                    <div class="cal-mini-d">11</div><div class="cal-mini-d">12</div><div class="cal-mini-d">13</div><div class="cal-mini-d">14</div><div class="cal-mini-d">15</div><div class="cal-mini-d">16</div><div class="cal-mini-d">17</div>
+                    <div class="cal-mini-d">18</div><div class="cal-mini-d">19</div><div class="cal-mini-d">20</div><div class="cal-mini-d">21</div><div class="cal-mini-d sel">22</div><div class="cal-mini-d">23</div><div class="cal-mini-d">24</div>
+                    <div class="cal-mini-d">25</div><div class="cal-mini-d">26</div><div class="cal-mini-d">27</div><div class="cal-mini-d">28</div><div class="cal-mini-d">29</div><div class="cal-mini-d">30</div><div class="cal-mini-d">31</div>
                   </div>
+                  <div class="cal-when-time">02:00</div>
+                  <div class="cal-when-date">Friday, 22 May 2026</div>
                 </div>
-                <div class="cal-time-sec">
-                  <div class="cal-time-big">02:00</div>
-                  <div class="cal-time-ampm">Friday, 22 May 2026</div>
-                  <div class="cal-venue-row"><div class="cal-venue-dot"></div>VFS Global, Delhi</div>
+                <div class="cal-3col-sec">
+                  <div class="cal-3col-label">Where</div>
+                  <div class="cal-map-wrap">
+                    <svg class="cal-map-svg" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="120" height="80" fill="#eae6dc"/>
+                      <rect x="0" y="32" width="120" height="8" fill="#f5f1e8"/>
+                      <rect x="0" y="58" width="120" height="6" fill="#f5f1e8"/>
+                      <rect x="44" y="0" width="8" height="80" fill="#f5f1e8"/>
+                      <rect x="78" y="0" width="6" height="80" fill="#f5f1e8"/>
+                      <rect x="2" y="2" width="40" height="28" rx="2" fill="#d8d3c7"/>
+                      <rect x="54" y="2" width="22" height="28" rx="2" fill="#d8d3c7"/>
+                      <rect x="86" y="2" width="32" height="28" rx="2" fill="#d8d3c7"/>
+                      <rect x="2" y="42" width="40" height="14" rx="2" fill="#d8d3c7"/>
+                      <rect x="54" y="42" width="22" height="14" rx="2" fill="#d8d3c7"/>
+                      <rect x="86" y="42" width="32" height="14" rx="2" fill="#d8d3c7"/>
+                      <rect x="2" y="66" width="40" height="12" rx="2" fill="#d8d3c7"/>
+                      <rect x="54" y="66" width="22" height="12" rx="2" fill="#d8d3c7"/>
+                      <rect x="86" y="66" width="32" height="12" rx="2" fill="#d8d3c7"/>
+                      <circle cx="48" cy="36" r="11" fill="#E8622A" opacity="0.12"/>
+                      <path d="M48 24 C44.1 24 41 27.1 41 31 C41 36.2 48 44 48 44 C48 44 55 36.2 55 31 C55 27.1 51.9 24 48 24Z" fill="#E8622A"/>
+                      <circle cx="48" cy="31" r="3" fill="white"/>
+                    </svg>
+                  </div>
+                  <div class="cal-addr">VFS Global Centre<br>Connaught Place<br>New Delhi, India</div>
+                </div>
+                <div class="cal-3col-sec">
+                  <div class="cal-3col-label">Quick actions</div>
+                  <button class="cal-action-btn">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="1.5" stroke="#E8622A" stroke-width="1.2"/><path d="M4 2V1M10 2V1" stroke="#E8622A" stroke-width="1.2" stroke-linecap="round"/><path d="M1 5.5h12" stroke="#E8622A" stroke-width="1.2"/><rect x="4" y="8" width="2" height="2" rx="0.5" fill="#E8622A"/></svg>
+                    Add to calendar
+                  </button>
+                  <button class="cal-action-btn">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5C3 8 7 13 7 13C7 13 11 8 11 5C11 2.8 9.2 1 7 1Z" stroke="#E8622A" stroke-width="1.2" stroke-linejoin="round"/><circle cx="7" cy="5" r="1.5" fill="#E8622A"/></svg>
+                    Open in Maps
+                  </button>
                 </div>
               </div>
               <div class="cal-footer"><span>📋 Documents required</span><span class="cal-footer-link">View checklist →</span></div>
             </div>
             <div class="bp-card">
               <div class="bp-top">
-                <div class="bp-airline"><div class="bp-ay-mark">AY</div><div><div class="bp-al-name">Finnair</div><div class="bp-fcode">AYAY1234</div></div></div>
+                <div class="bp-airline"><div class="bp-ay-mark"><img src="finnair-logo.png" alt="Finnair"></div><div><div class="bp-al-name">Finnair</div><div class="bp-fcode">AYAY1234</div></div></div>
                 <div class="bp-class-tag">Economy</div>
               </div>
               <div class="bp-route-row">
@@ -1684,7 +1733,6 @@ body {
               <div class="bp-footer">
                 <div class="bp-pax-block"><div class="bp-pax-label">Passenger</div><div class="bp-pax">Ramya Thalmann</div></div>
                 <div class="bp-date-block"><div class="bp-date-label">Date</div><div class="bp-date-val">Fri, Jun 5 2026</div></div>
-                <div class="bp-barcode"><div style="height:100%"></div><div style="height:60%"></div><div style="height:85%"></div><div style="height:100%"></div><div style="height:45%"></div><div style="height:90%"></div><div style="height:70%"></div><div style="height:100%"></div><div style="height:55%"></div><div style="height:80%"></div><div style="height:100%"></div><div style="height:65%"></div><div style="height:40%"></div><div style="height:95%"></div><div style="height:100%"></div></div>
               </div>
             </div>
           </div>
