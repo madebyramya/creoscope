@@ -744,7 +744,7 @@ body {
   margin-bottom: 8px;
   font-size: 13px; font-weight: 600; color: var(--ink);
 }
-.sb-logo svg { width: 16px; height: 13px; }
+.sb-logo img { height: 16px; width: auto; display: block; }
 .sb-item {
   display: flex; align-items: center; gap: 9px;
   padding: 8px 16px;
@@ -866,7 +866,7 @@ body {
 .cal-confirmed { display:flex; align-items:center; gap:4px; font-size:9px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--s-green); background:var(--s-green-bg); padding:3px 8px; border-radius:20px; white-space:nowrap; }
 .cal-body { padding:10px 13px; display:flex; gap:14px; align-items:flex-start; }
 .cal-widget { flex-shrink:0; }
-.cal-month-label { font-size:9px; font-weight:600; color:var(--ink-muted); letter-spacing:0.05em; text-transform:uppercase; margin-bottom:5px; }
+.cal-month-label { font-size:9px; font-weight:600; color:var(--ink-muted); letter-spacing:0.05em; text-transform:uppercase; margin-bottom:10px; text-align:center; }
 .cal-grid { display:grid; grid-template-columns:repeat(7,20px); gap:1px; }
 .cal-wd { font-size:8px; color:var(--ink-faint); font-weight:600; text-align:center; padding-bottom:3px; }
 .cal-d { width:20px; height:20px; border-radius:4px; font-size:9px; font-weight:500; color:var(--ink-soft); display:flex; align-items:center; justify-content:center; }
@@ -883,22 +883,26 @@ body {
 .cal-hdr-left { display:flex; align-items:center; gap:9px; }
 .cal-org-mark { width:28px; height:28px; border-radius:6px; background:var(--cream-light); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; overflow:hidden; flex-shrink:0; }
 .cal-org-mark img { width:22px; height:auto; display:block; }
-.cal-3col { display:grid; grid-template-columns:1fr 1fr 1fr; }
-.cal-3col-sec { padding:10px 12px; }
+.cal-3col { display:grid; grid-template-columns:1fr 1fr; }
+.cal-3col-sec { padding:10px 12px; display:flex; flex-direction:column; }
 .cal-3col-sec + .cal-3col-sec { border-left:1px solid var(--border); }
 .cal-3col-label { font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-muted); margin-bottom:7px; }
-.cal-mini-grid { display:grid; grid-template-columns:repeat(7,14px); gap:1px; }
-.cal-mini-wd { font-size:6px; font-weight:600; color:var(--ink-faint); text-align:center; padding-bottom:2px; }
-.cal-mini-d { font-size:7px; text-align:center; color:var(--ink-muted); width:14px; height:14px; display:flex; align-items:center; justify-content:center; border-radius:50%; }
+.cal-grid-block { flex:1; border-radius:var(--r-md); border:1px solid var(--border); padding:16px; margin-bottom:7px; display:flex; flex-direction:column; justify-content:space-between; }
+.cal-mini-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
+.cal-mini-wd { font-size:8px; font-weight:600; color:var(--ink-faint); text-align:center; padding-bottom:4px; }
+.cal-mini-d { font: size 10px; text-align:center; color:var(--ink-muted); aspect-ratio:1; display:flex; align-items:center; justify-content:center; border-radius:50%; }
 .cal-mini-d.faint { color:transparent; }
-.cal-mini-d.sel { background:var(--orange); color:white; font-weight:700; }
+.cal-mini-d.sel { background:var(--orange); color:white; font-weight:700; transition:transform 0.45s cubic-bezier(0.34,1.56,0.64,1); }
+.cal-3col-sec:hover .cal-mini-d.sel { transform:scale(1.6); position:relative; z-index:1; }
 .cal-when-time { font-size:20px; font-weight:700; color:var(--ink); letter-spacing:-0.04em; margin-top:7px; line-height:1; }
 .cal-when-date { font-size:9px; color:var(--ink-muted); margin-top:3px; }
-.cal-map-wrap { border-radius:var(--r-md); overflow:hidden; margin-bottom:7px; border:1px solid var(--border); }
-.cal-map-svg { width:100%; display:block; }
-.cal-addr { font-size:9px; color:var(--ink-muted); line-height:1.5; }
-.cal-action-btn { width:100%; display:flex; align-items:center; gap:7px; background:var(--cream-light); border:1px solid var(--border); border-radius:var(--r-md); padding:8px 10px; font-size:10px; font-weight:600; color:var(--ink); font-family:var(--sans); cursor:pointer; text-align:left; margin-bottom:6px; transition:background 0.15s,border-color 0.15s; }
-.cal-action-btn:last-child { margin-bottom:0; }
+.cal-map-wrap { flex:1; border-radius:var(--r-md); overflow:hidden; margin-bottom:7px; border:1px solid var(--border); position:relative; cursor:pointer; }
+.cal-map-img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
+.cal-map-wrap:hover .cal-map-img { transform:scale(1.08); }
+.cal-map-pin { position:absolute; left:50%; top:50%; transform:translate(-50%,-100%); pointer-events:none; }
+.cal-map-pin svg { filter:drop-shadow(0 2px 4px rgba(0,0,0,0.25)); }
+.cal-addr { font-size:9px; color:var(--ink-muted); line-height:1.5; margin-bottom:7px; }
+.cal-action-btn { width:100%; display:flex; align-items:center; gap:7px; background:var(--cream-light); border:1px solid var(--border); border-radius:var(--r-md); padding:8px 10px; font-size:10px; font-weight:600; color:var(--ink); font-family:var(--sans); cursor:pointer; text-align:left; margin-top:auto; transition:background 0.15s,border-color 0.15s; }
 .cal-action-btn:hover { background:rgba(232,98,42,0.05); border-color:rgba(232,98,42,0.3); }
 .cal-action-btn svg { flex-shrink:0; }
 
@@ -977,6 +981,18 @@ body {
 .deliv-n { font-size: 20px; font-weight: 600; color: rgba(255,255,255,0.2); line-height: 1; flex-shrink: 0; width: 18px; letter-spacing: -0.03em; }
 .deliv h4 { font-size: 12px; font-weight: 600; color: white; margin-bottom: 2px; }
 .deliv p  { font-size: 11px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+/* ── Cover slide ── */
+.cover-slide { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:0; }
+.cover-elva-logo { margin-bottom:48px; }
+.cover-elva-logo img { height:36px; width:auto; display:block; }
+.cover-eyebrow { font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--orange); margin-bottom:20px; }
+.cover-title { font-size:clamp(36px, 5vw, 64px); font-weight:800; color:var(--ink); letter-spacing:-0.04em; line-height:1.05; margin-bottom:28px; }
+.cover-title em { color:var(--orange); font-style:italic; }
+.cover-by { font-size:15px; color:var(--ink-muted); font-weight:400; letter-spacing:-0.01em; }
+.cover-by strong { color:var(--ink); font-weight:600; }
+.cover-rule { width:40px; height:2px; background:var(--orange); border-radius:2px; margin:28px auto; }
+.cover-meta { font-size:11px; color:var(--ink-faint); letter-spacing:0.06em; text-transform:uppercase; }
 </style>
 </head>
 <body>
@@ -998,17 +1014,21 @@ body {
 
 <div class="deck" id="deck">
 
+<!-- ══ SLIDE 0 — COVER ══ -->
+<section class="slide cover-slide" id="s-cover">
+  <div class="cover-elva-logo">
+    <img src="elva-logo.png" alt="Elva">
+  </div>
+  <div class="cover-eyebrow">May 2026</div>
+  <h1 class="cover-title">Product design direction<br>for <em>Elva</em></h1>
+  <div class="cover-rule"></div>
+  <p class="cover-by">by <strong>Ramya Thalmann</strong></p>
+</section>
+
+
 <!-- ══ SLIDE 1 — HERO ══ -->
 <section class="slide" id="s-hero">
   <div class="hero-top">
-    <div class="elva-logo">
-      <svg viewBox="0 0 22 17" fill="currentColor">
-        <path d="M8.2 0L1 8.5L8.2 17L12 13L7 8.5L12 4Z"/>
-        <path d="M13.8 0L21 8.5L13.8 17L10 13L15 8.5L10 4Z"/>
-      </svg>
-      elva
-    </div>
-    <span class="hero-chip">Product design pitch</span>
   </div>
   <div class="eyebrow">Product design direction — 2026</div>
   <h1 class="hero-h1">V1 works.<br>V2 should <span>feel</span><br>like Elva.</h1>
@@ -1256,195 +1276,24 @@ body {
 
 <!-- ══ SLIDE 5 — EXAMPLES INTRO ══ -->
 <section class="slide" id="s-ex-intro">
-  <div class="eyebrow">04 — Specific examples</div>
-  <h1 class="ei-h">Two screens.<br><em>Same direction.</em></h1>
-  <p style="font-size:15px;color:var(--ink-muted);line-height:1.7;max-width:540px;">The relocation timeline and the bookings page — rebuilt within Elva's existing brand. Same sidebar, same colours, consistent craft.</p>
+  <div class="eyebrow">04 — Specific example</div>
+  <h1 class="ei-h">One screen.<br><em>A new direction.</em></h1>
+  <p style="font-size:15px;color:var(--ink-muted);line-height:1.7;max-width:540px;">The bookings page — rebuilt within Elva's existing brand. Same sidebar, same colours, consistent craft.</p>
   <div class="ei-cards">
     <div class="ei-card">
       <div class="ei-num">1</div>
-      <div><div class="ei-card-title">Relocation timeline</div><div class="ei-card-sub">New design &rarr; before/after comparison</div></div>
-    </div>
-    <div class="ei-card">
-      <div class="ei-num">2</div>
       <div><div class="ei-card-title">My bookings</div><div class="ei-card-sub">New design &rarr; before/after comparison</div></div>
     </div>
   </div>
 </section>
 
 
-<!-- ══ SLIDE 6 — TIMELINE: NEW DESIGN ══ -->
-<section class="slide slide-dark" id="s-ex-tl-new">
-  <div class="dark-hdr">
-    <div class="eyebrow">04 — Example 1 of 2</div>
-    <h2>Relocation timeline. <span>Redesigned.</span></h2>
-    <p>Same sidebar, same brand — elevated with a progress hero, animated steps, and contextual copy.</p>
-  </div>
-  <div style="display:flex;flex-direction:column;gap:7px;max-width:860px;width:100%;margin:0 auto;">
-    <div class="ex-col-label">↳ Relocation timeline</div>
-    <div class="tl-wrap">
-      <div class="tl-chrome">
-        <div class="tl-dots"><div class="tl-dot r"></div><div class="tl-dot y"></div><div class="tl-dot g"></div></div>
-        <div class="tl-url">app.withelva.com / timeline</div>
-        <div></div>
-      </div>
-      <div class="tl-body">
-        <div class="tl-sb">
-          <div class="sb-logo"><svg viewBox="0 0 22 17" fill="currentColor"><path d="M8.2 0L1 8.5L8.2 17L12 13L7 8.5L12 4Z"/><path d="M13.8 0L21 8.5L13.8 17L10 13L15 8.5L10 4Z"/></svg>elva</div>
-          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 7.5L7.5 2 13 7.5M3.5 6V12.5H6.5V9H8.5V12.5H11.5V6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</div>
-          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 4h11M2 7.5h7M2 11h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Tasks</div>
-          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><rect x="2" y="2" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 7.5h5M5 5h3M5 10h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Vault</div>
-          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><rect x="2" y="3" width="11" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 3V2M10 3V2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2 6h11" stroke="currentColor" stroke-width="1.3"/></svg>Bookings</div>
-          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M13 9.5C13 10.3 12.3 11 11.5 11H4.5L2 13V4.5C2 3.7 2.7 3 3.5 3H11.5C12.3 3 13 3.7 13 4.5V9.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Let's talk</div>
-          <div class="sb-item on"><svg viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7.5 4.5V7.5L9.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Timeline</div>
-          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 12C2 9.5 4.5 7.5 7.5 7.5S13 9.5 13 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="7.5" cy="4.5" r="2.5" stroke="currentColor" stroke-width="1.3"/></svg>Wellbeing hub</div>
-          <div class="sb-bottom"><div class="sb-av">RT</div><div><div class="sb-uname">Ramya T.</div><div class="sb-urole">Relocating to Finland</div></div></div>
-        </div>
-        <div class="tl-main">
-          <div class="tl-pg-title">Your relocation timeline</div>
-          <div class="tl-pg-sub">Japan → Finland · 10 steps</div>
-          <div class="prog-hero">
-            <div>
-              <div class="prh-label">Overall progress</div>
-              <div class="prh-steps">1 <span>of 10 steps completed</span></div>
-              <div class="prh-track"><div class="prh-fill" id="prh-fill"></div></div>
-            </div>
-            <div class="prh-right"><div class="prh-nl">Up next</div><div class="prh-nv">Permit application</div></div>
-          </div>
-          <div class="tl-steps">
-            <div class="tl-step">
-              <div class="tl-conn"><div class="tl-node done"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tl-line done"></div></div>
-              <div class="tl-card"><div class="tl-ci dn"><div class="tl-ctop"><span class="tl-ctitle">Case confirmation by employer</span><span class="tl-cbadge cbg-dn">Done</span></div><div class="tl-csub">Employer confirmed. Elva is managing your case.</div></div></div>
-            </div>
-            <div class="tl-step">
-              <div class="tl-conn"><div class="tl-node active"><div class="ni"></div></div><div class="tl-line pending"></div></div>
-              <div class="tl-card"><div class="tl-ci ac"><div class="tl-ctop"><span class="tl-ctitle">Permit application submission</span><span class="tl-cbadge cbg-ac">In progress</span></div><div class="tl-csub">Your case manager is preparing your permit. Est. 5–7 business days.</div></div></div>
-            </div>
-            <div class="tl-step">
-              <div class="tl-conn"><div class="tl-node pending"><div class="ni"></div></div><div class="tl-line pending"></div></div>
-              <div class="tl-card"><div class="tl-ci pe"><div class="tl-ctop"><span class="tl-ctitle">Biometric appointment</span><span class="tl-cbadge cbg-pe">To do</span></div><div class="tl-csub">VFS Global centre. Usually 30 minutes.</div></div></div>
-            </div>
-            <div class="tl-step">
-              <div class="tl-conn"><div class="tl-node pending"><div class="ni"></div></div><div class="tl-line" style="background:transparent"></div></div>
-              <div class="tl-card"><div class="tl-ci pe"><div class="tl-ctop"><span class="tl-ctitle">Permit decision</span><span class="tl-cbadge cbg-pe">To do</span></div><div class="tl-csub">Typically 4–8 weeks. Elva monitors and keeps you updated.</div></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══ SLIDE 7 — TIMELINE: BEFORE / AFTER ══ -->
-<section class="slide ba-slide" id="s-ex-tl-ba">
-  <div class="ba-hdr">
-    <div class="eyebrow">04 — Example 1 of 2</div>
-    <h2>Timeline. <span>Before / After.</span></h2>
-    <p>Drag to compare v1 with the redesigned direction.</p>
-    <div class="ba-hint">
-      <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M10 1l4 4-4 4M6 1L2 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Drag the handle
-    </div>
-  </div>
-  <div class="ba-stage">
-    <!-- BEFORE layer -->
-    <div class="ba-before">
-      <div class="tl-wrap">
-        <div class="tl-chrome">
-          <div class="tl-dots"><div class="tl-dot r"></div><div class="tl-dot y"></div><div class="tl-dot g"></div></div>
-          <div class="tl-url">app.withelva.com / timeline</div>
-          <div></div>
-        </div>
-        <div class="tl-body">
-          <div class="tl-sb">
-            <div class="sb-logo"><svg viewBox="0 0 22 17" fill="currentColor"><path d="M8.2 0L1 8.5L8.2 17L12 13L7 8.5L12 4Z"/><path d="M13.8 0L21 8.5L13.8 17L10 13L15 8.5L10 4Z"/></svg>elva</div>
-            <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 7.5L7.5 2 13 7.5M3.5 6V12.5H6.5V9H8.5V12.5H11.5V6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</div>
-            <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 4h11M2 7.5h7M2 11h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Tasks</div>
-            <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><rect x="2" y="2" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 7.5h5M5 5h3M5 10h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Vault</div>
-            <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><rect x="2" y="3" width="11" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 3V2M10 3V2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2 6h11" stroke="currentColor" stroke-width="1.3"/></svg>Bookings</div>
-            <div class="sb-item on"><svg viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7.5 4.5V7.5L9.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Timeline</div>
-            <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 12C2 9.5 4.5 7.5 7.5 7.5S13 9.5 13 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="7.5" cy="4.5" r="2.5" stroke="currentColor" stroke-width="1.3"/></svg>Wellbeing hub</div>
-            <div class="sb-bottom"><div class="sb-av">RT</div><div><div class="sb-uname">Ramya T.</div><div class="sb-urole">Relocating to Finland</div></div></div>
-          </div>
-          <div class="v1-main">
-            <div class="v1-title">Your relocation timeline</div>
-            <div class="v1-rows">
-              <div class="v1-row"><div class="v1-col"><div class="v1-nd v1-nd-done"></div><div class="v1-conn"></div></div><div class="v1-text"><span class="v1-sname">Case confirmation by employer</span><span class="v1-badge v1-done">Done</span></div></div>
-              <div class="v1-row"><div class="v1-col"><div class="v1-nd v1-nd-active"></div><div class="v1-conn"></div></div><div class="v1-text"><span class="v1-sname">Permit application submission</span><span class="v1-badge v1-tbd">To be done</span></div></div>
-              <div class="v1-row"><div class="v1-col"><div class="v1-nd"></div><div class="v1-conn"></div></div><div class="v1-text"><span class="v1-sname">Spouse permit application</span><span class="v1-badge v1-tbd">To be done</span></div></div>
-              <div class="v1-row"><div class="v1-col"><div class="v1-nd"></div><div class="v1-conn"></div></div><div class="v1-text"><span class="v1-sname">Biometric appointment</span><span class="v1-badge v1-tbd">To be done</span></div></div>
-              <div class="v1-row"><div class="v1-col"><div class="v1-nd"></div><div class="v1-conn"></div></div><div class="v1-text"><span class="v1-sname">Permit decision</span><span class="v1-badge v1-tbd">To be done</span></div></div>
-              <div class="v1-row"><div class="v1-col"><div class="v1-nd"></div><div class="v1-conn"></div></div><div class="v1-text"><span class="v1-sname">Arrival in Finland</span><span class="v1-badge v1-tbd">To be done</span></div></div>
-              <div class="v1-row"><div class="v1-col"><div class="v1-nd"></div><div class="v1-conn" style="background:none"></div></div><div class="v1-text"><span class="v1-sname">Temporary accommodation</span><span class="v1-badge v1-tbd">To be done</span></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- AFTER layer -->
-    <div class="ba-after">
-      <div class="tl-wrap">
-        <div class="tl-chrome">
-          <div class="tl-dots"><div class="tl-dot r"></div><div class="tl-dot y"></div><div class="tl-dot g"></div></div>
-          <div class="tl-url">app.withelva.com / timeline</div>
-          <div></div>
-        </div>
-        <div class="tl-body">
-          <div class="tl-sb">
-            <div class="sb-logo"><svg viewBox="0 0 22 17" fill="currentColor"><path d="M8.2 0L1 8.5L8.2 17L12 13L7 8.5L12 4Z"/><path d="M13.8 0L21 8.5L13.8 17L10 13L15 8.5L10 4Z"/></svg>elva</div>
-            <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 7.5L7.5 2 13 7.5M3.5 6V12.5H6.5V9H8.5V12.5H11.5V6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</div>
-            <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 4h11M2 7.5h7M2 11h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Tasks</div>
-            <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><rect x="2" y="2" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 7.5h5M5 5h3M5 10h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Vault</div>
-            <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><rect x="2" y="3" width="11" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 3V2M10 3V2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2 6h11" stroke="currentColor" stroke-width="1.3"/></svg>Bookings</div>
-            <div class="sb-item on"><svg viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7.5 4.5V7.5L9.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Timeline</div>
-            <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 12C2 9.5 4.5 7.5 7.5 7.5S13 9.5 13 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="7.5" cy="4.5" r="2.5" stroke="currentColor" stroke-width="1.3"/></svg>Wellbeing hub</div>
-            <div class="sb-bottom"><div class="sb-av">RT</div><div><div class="sb-uname">Ramya T.</div><div class="sb-urole">Relocating to Finland</div></div></div>
-          </div>
-          <div class="tl-main">
-            <div class="tl-pg-title">Your relocation timeline</div>
-            <div class="tl-pg-sub">Japan → Finland · 10 steps</div>
-            <div class="prog-hero">
-              <div>
-                <div class="prh-label">Overall progress</div>
-                <div class="prh-steps">1 <span>of 10 steps completed</span></div>
-                <div class="prh-track"><div class="prh-fill" id="prh-fill-ba" style="width:10%"></div></div>
-              </div>
-              <div class="prh-right"><div class="prh-nl">Up next</div><div class="prh-nv">Permit application</div></div>
-            </div>
-            <div class="tl-steps">
-              <div class="tl-step">
-                <div class="tl-conn"><div class="tl-node done"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="tl-line done"></div></div>
-                <div class="tl-card"><div class="tl-ci dn"><div class="tl-ctop"><span class="tl-ctitle">Case confirmation by employer</span><span class="tl-cbadge cbg-dn">Done</span></div><div class="tl-csub">Employer confirmed. Elva is managing your case.</div></div></div>
-              </div>
-              <div class="tl-step">
-                <div class="tl-conn"><div class="tl-node active"><div class="ni"></div></div><div class="tl-line pending"></div></div>
-                <div class="tl-card"><div class="tl-ci ac"><div class="tl-ctop"><span class="tl-ctitle">Permit application submission</span><span class="tl-cbadge cbg-ac">In progress</span></div><div class="tl-csub">Your case manager is preparing your permit. Est. 5–7 business days.</div></div></div>
-              </div>
-              <div class="tl-step">
-                <div class="tl-conn"><div class="tl-node pending"><div class="ni"></div></div><div class="tl-line pending"></div></div>
-                <div class="tl-card"><div class="tl-ci pe"><div class="tl-ctop"><span class="tl-ctitle">Biometric appointment</span><span class="tl-cbadge cbg-pe">To do</span></div><div class="tl-csub">VFS Global centre. Usually 30 minutes.</div></div></div>
-              </div>
-              <div class="tl-step">
-                <div class="tl-conn"><div class="tl-node pending"><div class="ni"></div></div><div class="tl-line" style="background:transparent"></div></div>
-                <div class="tl-card"><div class="tl-ci pe"><div class="tl-ctop"><span class="tl-ctitle">Permit decision</span><span class="tl-cbadge cbg-pe">To do</span></div><div class="tl-csub">Typically 4–8 weeks. Elva monitors and keeps you updated.</div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Handle -->
-    <div class="ba-handle" id="ba-tl-handle"><div class="ba-knob">⟺</div></div>
-    <div class="ba-tag ba-tag-b">Before</div>
-    <div class="ba-tag ba-tag-a">After</div>
-  </div>
-</section>
 
 
 <!-- ══ SLIDE 8 — BOOKINGS: NEW DESIGN ══ -->
 <section class="slide slide-dark" id="s-ex-bk-new">
   <div class="dark-hdr">
-    <div class="eyebrow">04 — Example 2 of 2</div>
+    <div class="eyebrow">04 — Example</div>
     <h2>My bookings. <span>Redesigned.</span></h2>
     <p>Calendar-first appointment view and boarding pass card — all within Elva's existing brand.</p>
   </div>
@@ -1458,7 +1307,7 @@ body {
       </div>
       <div class="tl-body">
         <div class="tl-sb">
-          <div class="sb-logo"><svg viewBox="0 0 22 17" fill="currentColor"><path d="M8.2 0L1 8.5L8.2 17L12 13L7 8.5L12 4Z"/><path d="M13.8 0L21 8.5L13.8 17L10 13L15 8.5L10 4Z"/></svg>elva</div>
+          <div class="sb-logo"><img src="elva-logo.png" alt="Elva"></div>
           <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 7.5L7.5 2 13 7.5M3.5 6V12.5H6.5V9H8.5V12.5H11.5V6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</div>
           <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 4h11M2 7.5h7M2 11h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Tasks</div>
           <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><rect x="2" y="2" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 7.5h5M5 5h3M5 10h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Vault</div>
@@ -1477,7 +1326,7 @@ body {
           <div class="cal-card">
             <div class="cal-card-hdr">
               <div class="cal-hdr-left">
-                <div class="cal-org-mark"><img src="vfs-logo.png" alt="VFS Global"></div>
+                <div class="cal-org-mark"><img src="thumbprint.png" alt="Biometric"></div>
                 <div class="cal-card-hdr-l">
                   <h4>Biometric Appointment</h4>
                   <p>VFS Global · Delhi, India</p>
@@ -1492,6 +1341,7 @@ body {
               <!-- When -->
               <div class="cal-3col-sec">
                 <div class="cal-3col-label">When</div>
+                <div class="cal-grid-block">
                 <div class="cal-month-label">May 2026</div>
                 <div class="cal-mini-grid">
                   <div class="cal-mini-wd">M</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">W</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">F</div><div class="cal-mini-wd">S</div><div class="cal-mini-wd">S</div>
@@ -1501,42 +1351,28 @@ body {
                   <div class="cal-mini-d">18</div><div class="cal-mini-d">19</div><div class="cal-mini-d">20</div><div class="cal-mini-d">21</div><div class="cal-mini-d sel">22</div><div class="cal-mini-d">23</div><div class="cal-mini-d">24</div>
                   <div class="cal-mini-d">25</div><div class="cal-mini-d">26</div><div class="cal-mini-d">27</div><div class="cal-mini-d">28</div><div class="cal-mini-d">29</div><div class="cal-mini-d">30</div><div class="cal-mini-d">31</div>
                 </div>
+                </div>
                 <div class="cal-when-time">02:00</div>
                 <div class="cal-when-date">Friday, 22 May 2026</div>
+                <button class="cal-action-btn">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="1.5" stroke="#E8622A" stroke-width="1.2"/><path d="M4 2V1M10 2V1" stroke="#E8622A" stroke-width="1.2" stroke-linecap="round"/><path d="M1 5.5h12" stroke="#E8622A" stroke-width="1.2"/><rect x="4" y="8" width="2" height="2" rx="0.5" fill="#E8622A"/></svg>
+                  Add to calendar
+                </button>
               </div>
               <!-- Where -->
               <div class="cal-3col-sec">
                 <div class="cal-3col-label">Where</div>
                 <div class="cal-map-wrap">
-                  <svg class="cal-map-svg" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="120" height="80" fill="#eae6dc"/>
-                    <rect x="0" y="32" width="120" height="8" fill="#f5f1e8"/>
-                    <rect x="0" y="58" width="120" height="6" fill="#f5f1e8"/>
-                    <rect x="44" y="0" width="8" height="80" fill="#f5f1e8"/>
-                    <rect x="78" y="0" width="6" height="80" fill="#f5f1e8"/>
-                    <rect x="2" y="2" width="40" height="28" rx="2" fill="#d8d3c7"/>
-                    <rect x="54" y="2" width="22" height="28" rx="2" fill="#d8d3c7"/>
-                    <rect x="86" y="2" width="32" height="28" rx="2" fill="#d8d3c7"/>
-                    <rect x="2" y="42" width="40" height="14" rx="2" fill="#d8d3c7"/>
-                    <rect x="54" y="42" width="22" height="14" rx="2" fill="#d8d3c7"/>
-                    <rect x="86" y="42" width="32" height="14" rx="2" fill="#d8d3c7"/>
-                    <rect x="2" y="66" width="40" height="12" rx="2" fill="#d8d3c7"/>
-                    <rect x="54" y="66" width="22" height="12" rx="2" fill="#d8d3c7"/>
-                    <rect x="86" y="66" width="32" height="12" rx="2" fill="#d8d3c7"/>
-                    <circle cx="48" cy="36" r="11" fill="#E8622A" opacity="0.12"/>
-                    <path d="M48 24 C44.1 24 41 27.1 41 31 C41 36.2 48 44 48 44 C48 44 55 36.2 55 31 C55 27.1 51.9 24 48 24Z" fill="#E8622A"/>
-                    <circle cx="48" cy="31" r="3" fill="white"/>
-                  </svg>
+                  <img src="map.png" alt="Map" class="cal-map-img">
+                  <div class="cal-map-pin">
+                    <svg width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="11" cy="11" r="11" fill="#E8622A" opacity="0.18"/>
+                      <path d="M11 0 C6.03 0 2 4.03 2 9 C2 15.75 11 25 11 25 C11 25 20 15.75 20 9 C20 4.03 15.97 0 11 0Z" fill="#E8622A"/>
+                      <circle cx="11" cy="9" r="3.5" fill="white"/>
+                    </svg>
+                  </div>
                 </div>
                 <div class="cal-addr">VFS Global Centre<br>Connaught Place<br>New Delhi, India</div>
-              </div>
-              <!-- Quick actions -->
-              <div class="cal-3col-sec">
-                <div class="cal-3col-label">Quick actions</div>
-                <button class="cal-action-btn">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="1.5" stroke="#E8622A" stroke-width="1.2"/><path d="M4 2V1M10 2V1" stroke="#E8622A" stroke-width="1.2" stroke-linecap="round"/><path d="M1 5.5h12" stroke="#E8622A" stroke-width="1.2"/><rect x="4" y="8" width="2" height="2" rx="0.5" fill="#E8622A"/></svg>
-                  Add to calendar
-                </button>
                 <button class="cal-action-btn">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5C3 8 7 13 7 13C7 13 11 8 11 5C11 2.8 9.2 1 7 1Z" stroke="#E8622A" stroke-width="1.2" stroke-linejoin="round"/><circle cx="7" cy="5" r="1.5" fill="#E8622A"/></svg>
                   Open in Maps
@@ -1595,7 +1431,7 @@ body {
 <!-- ══ SLIDE 9 — BOOKINGS: BEFORE / AFTER ══ -->
 <section class="slide ba-slide" id="s-ex-bk-ba">
   <div class="ba-hdr">
-    <div class="eyebrow">04 — Example 2 of 2</div>
+    <div class="eyebrow">04 — Example</div>
     <h2>Bookings. <span>Before / After.</span></h2>
     <p>From a flat list to a calendar and boarding pass.</p>
     <div class="ba-hint">
@@ -1614,7 +1450,7 @@ body {
         </div>
         <div class="tl-body">
           <div class="tl-sb">
-            <div class="sb-logo"><svg viewBox="0 0 22 17" fill="currentColor"><path d="M8.2 0L1 8.5L8.2 17L12 13L7 8.5L12 4Z"/><path d="M13.8 0L21 8.5L13.8 17L10 13L15 8.5L10 4Z"/></svg>elva</div>
+            <div class="sb-logo"><img src="elva-logo.png" alt="Elva"></div>
             <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 7.5L7.5 2 13 7.5M3.5 6V12.5H6.5V9H8.5V12.5H11.5V6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</div>
             <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 4h11M2 7.5h7M2 11h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Tasks</div>
             <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><rect x="2" y="2" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 7.5h5M5 5h3M5 10h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Vault</div>
@@ -1640,7 +1476,7 @@ body {
         </div>
         <div class="tl-body">
           <div class="tl-sb">
-            <div class="sb-logo"><svg viewBox="0 0 22 17" fill="currentColor"><path d="M8.2 0L1 8.5L8.2 17L12 13L7 8.5L12 4Z"/><path d="M13.8 0L21 8.5L13.8 17L10 13L15 8.5L10 4Z"/></svg>elva</div>
+            <div class="sb-logo"><img src="elva-logo.png" alt="Elva"></div>
             <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 7.5L7.5 2 13 7.5M3.5 6V12.5H6.5V9H8.5V12.5H11.5V6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</div>
             <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 4h11M2 7.5h7M2 11h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Tasks</div>
             <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><rect x="2" y="2" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 7.5h5M5 5h3M5 10h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Vault</div>
@@ -1656,7 +1492,7 @@ body {
             <div class="cal-card">
               <div class="cal-card-hdr">
                 <div class="cal-hdr-left">
-                  <div class="cal-org-mark"><img src="vfs-logo.png" alt="VFS Global"></div>
+                  <div class="cal-org-mark"><img src="thumbprint.png" alt="Biometric"></div>
                   <div class="cal-card-hdr-l"><h4>Biometric Appointment</h4><p>VFS Global · Delhi, India</p></div>
                 </div>
                 <div class="cal-confirmed"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#16A34A" stroke-width="1.2"/><path d="M2.8 5l1.5 1.5 2.7-2.7" stroke="#16A34A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Confirmed</div>
@@ -1664,6 +1500,7 @@ body {
               <div class="cal-3col">
                 <div class="cal-3col-sec">
                   <div class="cal-3col-label">When</div>
+                  <div class="cal-grid-block">
                   <div class="cal-month-label">May 2026</div>
                   <div class="cal-mini-grid">
                     <div class="cal-mini-wd">M</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">W</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">F</div><div class="cal-mini-wd">S</div><div class="cal-mini-wd">S</div>
@@ -1673,40 +1510,27 @@ body {
                     <div class="cal-mini-d">18</div><div class="cal-mini-d">19</div><div class="cal-mini-d">20</div><div class="cal-mini-d">21</div><div class="cal-mini-d sel">22</div><div class="cal-mini-d">23</div><div class="cal-mini-d">24</div>
                     <div class="cal-mini-d">25</div><div class="cal-mini-d">26</div><div class="cal-mini-d">27</div><div class="cal-mini-d">28</div><div class="cal-mini-d">29</div><div class="cal-mini-d">30</div><div class="cal-mini-d">31</div>
                   </div>
+                  </div>
                   <div class="cal-when-time">02:00</div>
                   <div class="cal-when-date">Friday, 22 May 2026</div>
-                </div>
-                <div class="cal-3col-sec">
-                  <div class="cal-3col-label">Where</div>
-                  <div class="cal-map-wrap">
-                    <svg class="cal-map-svg" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-                      <rect width="120" height="80" fill="#eae6dc"/>
-                      <rect x="0" y="32" width="120" height="8" fill="#f5f1e8"/>
-                      <rect x="0" y="58" width="120" height="6" fill="#f5f1e8"/>
-                      <rect x="44" y="0" width="8" height="80" fill="#f5f1e8"/>
-                      <rect x="78" y="0" width="6" height="80" fill="#f5f1e8"/>
-                      <rect x="2" y="2" width="40" height="28" rx="2" fill="#d8d3c7"/>
-                      <rect x="54" y="2" width="22" height="28" rx="2" fill="#d8d3c7"/>
-                      <rect x="86" y="2" width="32" height="28" rx="2" fill="#d8d3c7"/>
-                      <rect x="2" y="42" width="40" height="14" rx="2" fill="#d8d3c7"/>
-                      <rect x="54" y="42" width="22" height="14" rx="2" fill="#d8d3c7"/>
-                      <rect x="86" y="42" width="32" height="14" rx="2" fill="#d8d3c7"/>
-                      <rect x="2" y="66" width="40" height="12" rx="2" fill="#d8d3c7"/>
-                      <rect x="54" y="66" width="22" height="12" rx="2" fill="#d8d3c7"/>
-                      <rect x="86" y="66" width="32" height="12" rx="2" fill="#d8d3c7"/>
-                      <circle cx="48" cy="36" r="11" fill="#E8622A" opacity="0.12"/>
-                      <path d="M48 24 C44.1 24 41 27.1 41 31 C41 36.2 48 44 48 44 C48 44 55 36.2 55 31 C55 27.1 51.9 24 48 24Z" fill="#E8622A"/>
-                      <circle cx="48" cy="31" r="3" fill="white"/>
-                    </svg>
-                  </div>
-                  <div class="cal-addr">VFS Global Centre<br>Connaught Place<br>New Delhi, India</div>
-                </div>
-                <div class="cal-3col-sec">
-                  <div class="cal-3col-label">Quick actions</div>
                   <button class="cal-action-btn">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="1.5" stroke="#E8622A" stroke-width="1.2"/><path d="M4 2V1M10 2V1" stroke="#E8622A" stroke-width="1.2" stroke-linecap="round"/><path d="M1 5.5h12" stroke="#E8622A" stroke-width="1.2"/><rect x="4" y="8" width="2" height="2" rx="0.5" fill="#E8622A"/></svg>
                     Add to calendar
                   </button>
+                </div>
+                <div class="cal-3col-sec">
+                  <div class="cal-3col-label">Where</div>
+                  <div class="cal-map-wrap">
+                    <img src="map.png" alt="Map" class="cal-map-img">
+                    <div class="cal-map-pin">
+                      <svg width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="11" fill="#E8622A" opacity="0.18"/>
+                        <path d="M11 0 C6.03 0 2 4.03 2 9 C2 15.75 11 25 11 25 C11 25 20 15.75 20 9 C20 4.03 15.97 0 11 0Z" fill="#E8622A"/>
+                        <circle cx="11" cy="9" r="3.5" fill="white"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="cal-addr">VFS Global Centre<br>Connaught Place<br>New Delhi, India</div>
                   <button class="cal-action-btn">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5C3 8 7 13 7 13C7 13 11 8 11 5C11 2.8 9.2 1 7 1Z" stroke="#E8622A" stroke-width="1.2" stroke-linejoin="round"/><circle cx="7" cy="5" r="1.5" fill="#E8622A"/></svg>
                     Open in Maps
@@ -1778,7 +1602,7 @@ let current   = 0;
 let bentoFired = false;
 let tlFired    = false;
 
-const DARK_SLIDES = new Set(['s-next','s-ex-tl-new','s-ex-bk-new']);
+const DARK_SLIDES = new Set(['s-next','s-ex-bk-new']);
 
 function goTo(n) {
   n = Math.max(0, Math.min(slides.length - 1, n));
@@ -1846,9 +1670,7 @@ function initBASlider(stageEl, handleEl) {
 }
 
 window.addEventListener('load', () => {
-  const tlHandle = document.getElementById('ba-tl-handle');
   const bkHandle = document.getElementById('ba-bk-handle');
-  if (tlHandle) initBASlider(tlHandle.closest('.ba-stage'), tlHandle);
   if (bkHandle) initBASlider(bkHandle.closest('.ba-stage'), bkHandle);
 });
 
