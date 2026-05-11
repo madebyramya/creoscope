@@ -158,24 +158,31 @@ body {
   color: var(--ink-soft);
   line-height: 1.72;
   max-width: 520px;
-  margin-bottom: 56px;
 }
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+.hero-left { flex: none; }
 .hero-agenda {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  flex-shrink: 0;
 }
 .agenda-item {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--ink-muted);
-  padding: 7px 16px;
+  padding: 9px 20px 9px 28px;
   border: 1px solid var(--border-med);
   border-radius: 20px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
-.agenda-n { font-size: 10px; font-weight: 600; color: var(--orange); }
+.agenda-n { font-size: 12px; font-weight: 600; color: var(--orange); }
 
 
 /* ══════════════════════════════════
@@ -259,7 +266,7 @@ body {
 }
 .v1-node.on { border-color: var(--orange); background: var(--orange); }
 .v1-vline { width: 1px; flex: 1; min-height: 18px; background: #E5E7EB; margin: 3px 0; }
-.v1-info { flex: 1; }
+.v1-info { flex: 1; display: flex; align-items: center; justify-content: space-between; }
 .v1-name { font-size: 12px; font-weight: 500; color: var(--ink); }
 .v1-status { font-size: 11px; color: #9CA3AF; }
 
@@ -280,12 +287,13 @@ body {
 /* ══════════════════════════════════
    SLIDE 3 — STRATEGY
 ══════════════════════════════════ */
+#s-strategy-1 { justify-content: flex-start; }
 .strat-header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
-  margin-bottom: 40px;
-  align-items: end;
+  flex: 1;
+  align-items: center;
 }
 .strat-h {
   font-size: clamp(26px, 3vw, 40px);
@@ -295,40 +303,54 @@ body {
 }
 .strat-h span { color: var(--orange); }
 .strat-quote {
-  font-size: 15px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 52px 52px 48px;
+  margin-right: 64px;
+  font-size: clamp(18px, 1.8vw, 24px);
   font-style: italic;
-  color: var(--ink-soft);
-  line-height: 1.7;
-  padding-left: 18px;
-  border-left: 2px solid var(--orange);
+  color: var(--ink);
+  line-height: 1.65;
+  box-shadow: 0 2px 32px rgba(0,0,0,0.07);
+  position: relative;
+}
+.strat-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: 16px; left: 36px;
+  font-size: 72px;
+  line-height: 1;
+  font-style: normal;
+  color: var(--orange);
+  opacity: 0.3;
 }
 .pillars {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 16px;
   margin-bottom: 10px;
 }
 .pillar {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--r-xl);
-  padding: 22px 20px;
+  padding: 36px 32px;
   box-shadow: var(--shadow-sm);
 }
 .pillar-icon {
-  width: 30px; height: 30px;
+  width: 44px; height: 44px;
   border-radius: var(--r-sm);
-  margin-bottom: 14px;
+  margin-bottom: 20px;
   display: flex; align-items: center; justify-content: center;
 }
-.pillar h3 { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.01em; }
-.pillar p { font-size: 12px; color: var(--ink-muted); line-height: 1.62; }
+.pillar h3 { font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.02em; }
+.pillar p { font-size: 15px; color: var(--ink-muted); line-height: 1.65; }
 .pillar-tag {
   display: inline-block;
-  margin-top: 12px;
-  font-size: 10px; font-weight: 600;
+  margin-top: 18px;
+  font-size: 11px; font-weight: 600;
   letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 3px 9px; border-radius: 20px;
+  padding: 4px 11px; border-radius: 20px;
 }
 
 .principles {
@@ -340,13 +362,13 @@ body {
 }
 .dp {
   background: var(--cream-light);
-  padding: 18px 16px;
+  padding: 32px 28px;
   border-right: 1px solid var(--border);
 }
 .dp:last-child { border-right: none; }
-.dp-n { font-size: 10px; font-weight: 600; color: var(--ink-faint); margin-bottom: 7px; letter-spacing: 0.04em; }
-.dp h4 { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-.dp p { font-size: 11px; color: var(--ink-muted); line-height: 1.55; }
+.dp-n { font-size: 13px; font-weight: 600; color: var(--ink-faint); margin-bottom: 12px; letter-spacing: 0.04em; }
+.dp h4 { font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.02em; }
+.dp p { font-size: 15px; color: var(--ink-muted); line-height: 1.6; }
 
 /* ── Reveal slides (strategy-2, strategy-3) ── */
 .strat-mini-h {
@@ -378,6 +400,194 @@ body {
   color: var(--ink-faint);
   pointer-events: none;
   white-space: nowrap;
+}
+
+
+/* ══════════════════════════════════
+   SLIDE — BRAND FEELING
+══════════════════════════════════ */
+.bf-h {
+  font-size: clamp(17px, 1.9vw, 24px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+  max-width: 680px;
+  margin-bottom: 36px;
+}
+.bf-h span { color: var(--orange); }
+
+.spectrum-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.spectrum-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.sp-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sp-cool { align-items: flex-end; text-align: right; }
+.sp-cool .sp-words { justify-content: flex-end; }
+
+.sp-ref-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+
+.sp-words { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.sp-word {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 5px 13px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: -0.01em;
+}
+
+.sp-thumb {
+  width: 100%;
+  height: 100px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  background: var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sp-thumb-lbl {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.spectrum-bar-area { display: flex; flex-direction: column; gap: 10px; }
+
+.spectrum-bar {
+  height: 8px;
+  border-radius: 100px;
+  background: linear-gradient(
+    to right,
+    #E8622A,
+    #D4774A 20%,
+    #C89870 38%,
+    #A8B3C0 62%,
+    #8D98A8 75%,
+    #6B7280
+  );
+  position: relative;
+  overflow: visible;
+}
+
+.spectrum-pole-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* Elva marker */
+.elva-mkr {
+  position: absolute;
+  left: 22%;
+  bottom: 100%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  padding-bottom: 2px;
+}
+
+.elva-mkr-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  opacity: 0;
+}
+
+.elva-mkr-pill {
+  background: var(--orange);
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+  box-shadow: 0 2px 8px rgba(232,98,42,0.4);
+  white-space: nowrap;
+}
+
+.elva-mkr-stem {
+  width: 1.5px;
+  height: 10px;
+  background: var(--orange);
+  opacity: 0.5;
+}
+
+@keyframes elvaAppear {
+  0%   { opacity: 0; transform: translateY(6px) scale(0.8); }
+  65%  { opacity: 1; transform: translateY(-2px) scale(1.07); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Visibility controls by step */
+.bf-warm-content,
+.bf-cool-content {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s cubic-bezier(0.22,1,0.36,1), transform 0.45s cubic-bezier(0.22,1,0.36,1);
+}
+.bf-warm-thumb,
+.bf-cool-thumb {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1), transform 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+
+/* Step 1+: warm content */
+#s-brand-feeling[data-step="1"] .bf-warm-content,
+#s-brand-feeling[data-step="2"] .bf-warm-content,
+#s-brand-feeling[data-step="3"] .bf-warm-content,
+#s-brand-feeling[data-step="4"] .bf-warm-content { opacity: 1; transform: none; }
+
+/* Step 2–3: warm thumb (fades out at step 4) */
+#s-brand-feeling[data-step="2"] .bf-warm-thumb,
+#s-brand-feeling[data-step="3"] .bf-warm-thumb { opacity: 1; transform: none; }
+
+/* Step 3+: cool content */
+#s-brand-feeling[data-step="3"] .bf-cool-content,
+#s-brand-feeling[data-step="4"] .bf-cool-content { opacity: 1; transform: none; }
+
+/* Step 3 only: cool thumb (fades out at step 4) */
+#s-brand-feeling[data-step="3"] .bf-cool-thumb { opacity: 1; transform: none; }
+
+/* Step 4: Elva marker animates in */
+#s-brand-feeling[data-step="4"] .elva-mkr-inner {
+  animation: elvaAppear 0.6s cubic-bezier(0.22,1,0.36,1) forwards;
 }
 
 
@@ -514,6 +724,19 @@ body {
 }
 .check-path.drawn { stroke-dashoffset: 0; }
 .check-hint { font-size: 10px; color: var(--ink-faint); }
+.replay-btn {
+  position: absolute;
+  top: 14px; right: 14px;
+  width: 22px; height: 22px;
+  border: none; background: transparent;
+  color: var(--ink-faint);
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0;
+  transition: background 0.15s, color 0.15s;
+}
+.replay-btn:hover { background: rgba(0,0,0,0.07); color: var(--ink-soft); }
 
 /* — Card hover demo — */
 .card-demo { flex: 1; display: flex; flex-direction: column; gap: 7px; justify-content: center; }
@@ -916,30 +1139,34 @@ body {
 .cal-org-mark { width:28px; height:28px; border-radius:6px; background:var(--cream-light); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; overflow:hidden; flex-shrink:0; }
 .cal-org-mark img { width:22px; height:auto; display:block; }
 .cal-3col { display:grid; grid-template-columns:1fr 1fr; }
-.cal-3col-sec { padding:10px 12px; display:flex; flex-direction:column; }
+.cal-3col-sec { padding:8px 10px; display:flex; flex-direction:column; }
 .cal-3col-sec + .cal-3col-sec { border-left:1px solid var(--border); }
-.cal-3col-label { font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-muted); margin-bottom:7px; }
-.cal-grid-block { flex:1; border-radius:var(--r-md); border:1px solid var(--border); padding:16px; margin-bottom:7px; display:flex; flex-direction:column; justify-content:space-between; }
-.cal-mini-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
-.cal-mini-wd { font-size:8px; font-weight:600; color:var(--ink-faint); text-align:center; padding-bottom:4px; }
-.cal-mini-d { font: size 10px; text-align:center; color:var(--ink-muted); aspect-ratio:1; display:flex; align-items:center; justify-content:center; border-radius:50%; }
+.cal-3col-label { font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-muted); margin-bottom:6px; }
+.cal-grid-block { height:140px; flex:none; border-radius:var(--r-md); border:1px solid var(--border); padding:10px; margin-bottom:6px; display:flex; flex-direction:row; align-items:stretch; gap:10px; overflow:hidden; }
+.cal-grid-left { display:flex; flex-direction:column; flex:none; }
+.cal-grid-right { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; border-left:1px solid var(--border); padding-left:10px; }
+.cal-mini-grid { display:grid; grid-template-columns:repeat(7,18px); gap:2px; justify-content:center; }
+.cal-mini-wd { width:18px; font-size:7px; font-weight:600; color:var(--ink-faint); text-align:center; padding-bottom:3px; }
+.cal-mini-d { width:18px; height:18px; font-size:8px; text-align:center; color:var(--ink-muted); display:flex; align-items:center; justify-content:center; border-radius:50%; }
 .cal-mini-d.faint { color:transparent; }
 .cal-mini-d.sel { background:var(--orange); color:white; font-weight:700; transition:transform 0.45s cubic-bezier(0.34,1.56,0.64,1); }
-.cal-3col-sec:hover .cal-mini-d.sel { transform:scale(1.6); position:relative; z-index:1; }
-.cal-when-time { font-size:20px; font-weight:700; color:var(--ink); letter-spacing:-0.04em; margin-top:7px; line-height:1; }
-.cal-when-date { font-size:9px; color:var(--ink-muted); margin-top:3px; }
-.cal-map-wrap { flex:1; border-radius:var(--r-md); overflow:hidden; margin-bottom:7px; border:1px solid var(--border); position:relative; cursor:pointer; }
+.cal-3col-sec:hover .cal-mini-d.sel { transform:scale(1.4); position:relative; z-index:1; }
+.cal-when-time { font-size:22px; font-weight:700; color:var(--ink); letter-spacing:-0.04em; line-height:1; text-align:center; }
+.cal-when-date { font-size:8px; color:var(--ink-muted); line-height:1.4; }
+.cal-map-wrap { height:140px; flex:none; border-radius:var(--r-md); overflow:hidden; margin-bottom:6px; border:1px solid var(--border); position:relative; cursor:pointer; }
 .cal-map-img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
 .cal-map-wrap:hover .cal-map-img { transform:scale(1.08); }
 .cal-map-pin { position:absolute; left:50%; top:50%; transform:translate(-50%,-100%); pointer-events:none; }
 .cal-map-pin svg { filter:drop-shadow(0 2px 4px rgba(0,0,0,0.25)); }
-.cal-addr { font-size:9px; color:var(--ink-muted); line-height:1.5; margin-bottom:7px; }
-.cal-action-btn { width:100%; display:flex; align-items:center; gap:7px; background:var(--cream-light); border:1px solid var(--border); border-radius:var(--r-md); padding:8px 10px; font-size:10px; font-weight:600; color:var(--ink); font-family:var(--sans); cursor:pointer; text-align:left; margin-top:auto; transition:background 0.15s,border-color 0.15s; }
-.cal-action-btn:hover { background:rgba(232,98,42,0.05); border-color:rgba(232,98,42,0.3); }
+.cal-addr { font-size:9px; color:var(--ink-muted); line-height:1.5; }
+.cal-sec-bottom { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-top:6px; }
+.cal-action-btn { display:flex; align-items:center; gap:5px; background:transparent; border:1px solid rgba(0,0,0,0.11); border-radius:8px; padding:5px 9px; font-size:9px; font-weight:500; color:var(--ink-muted); font-family:var(--sans); cursor:pointer; flex-shrink:0; transition:background 0.15s,border-color 0.15s,color 0.15s; }
+.cal-action-btn:hover { background:rgba(232,98,42,0.05); border-color:rgba(232,98,42,0.25); color:var(--orange); }
 .cal-action-btn svg { flex-shrink:0; }
 
 /* Boarding pass */
-.bp-card { background:white; border-radius:var(--r-xl); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow-md); }
+.bp-card { background:white; border-radius:var(--r-xl); overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow-md); transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
+.bp-card:hover { transform:scale(1.015); box-shadow:0 8px 32px rgba(0,0,0,0.11); }
 .bp-top { display:flex; align-items:center; justify-content:space-between; padding:9px 13px; background:#0c0243; }
 .bp-airline { display:flex; align-items:center; gap:7px; }
 .bp-ay-mark { width:28px; height:28px; border-radius:5px; background:white; display:flex; align-items:center; justify-content:center; overflow:hidden; }
@@ -974,6 +1201,9 @@ body {
 .route-map-label { font-size:9px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.3); margin-bottom:8px; }
 .route-map-svg { width:100%; display:block; overflow:visible; }
 @keyframes planeFly { from { offset-distance:0% } to { offset-distance:100% } }
+@keyframes planeFloat { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-2.5px) } }
+.bp-plane-g { transform-box:fill-box; transform-origin:center; transition:transform 0.3s ease; }
+.bp-card:hover .bp-plane-g { animation:planeFloat 2.2s ease-in-out infinite; transform:scale(1.3); }
 .plane-dot { offset-path:path('M 220 82 Q 60 -30 60 30'); animation:planeFly 3s ease-in-out infinite alternate; }
 
 /* ══════════════════════════════════
@@ -1042,8 +1272,9 @@ body {
   <button class="nav-dot" data-i="8"></button>
   <button class="nav-dot" data-i="9"></button>
   <button class="nav-dot" data-i="10"></button>
+  <button class="nav-dot" data-i="11"></button>
 </nav>
-<div class="slide-counter" id="counter">1 / 10</div>
+<div class="slide-counter" id="counter">1 / 12</div>
 
 <div class="deck" id="deck">
 
@@ -1063,15 +1294,19 @@ body {
 <section class="slide" id="s-hero">
   <div class="hero-top">
   </div>
-  <div class="eyebrow">Product design direction — 2026</div>
-  <h1 class="hero-h1">V1 works.<br>V2 should <span>feel</span><br>like Elva.</h1>
-  <p class="hero-sub">The product already does the job. What's missing is the feeling — the craft, motion, and intentionality that turns a useful tool into something people genuinely want to use.</p>
-  <div class="hero-agenda">
-    <div class="agenda-item"><span class="agenda-n">01</span> Where you are now</div>
-    <div class="agenda-item"><span class="agenda-n">02</span> Where to move next</div>
-    <div class="agenda-item"><span class="agenda-n">03</span> What Elva should feel like</div>
-    <div class="agenda-item"><span class="agenda-n">04</span> Specific examples</div>
-    <div class="agenda-item"><span class="agenda-n">05</span> Next steps</div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="eyebrow">Product design direction — 2026</div>
+      <h1 class="hero-h1">V1 works.<br>V2 should <span>feel</span><br>like Elva.</h1>
+      <p class="hero-sub">The product already does the job. What's missing is the feeling — the craft, motion, and intentionality that turns a useful tool into something people genuinely want to use.</p>
+    </div>
+    <div class="hero-agenda">
+      <div class="agenda-item"><span class="agenda-n">01</span> Where you are now</div>
+      <div class="agenda-item"><span class="agenda-n">02</span> Where to move next</div>
+      <div class="agenda-item"><span class="agenda-n">03</span> What Elva should feel like</div>
+      <div class="agenda-item"><span class="agenda-n">04</span> Specific examples</div>
+      <div class="agenda-item"><span class="agenda-n">05</span> Next steps</div>
+    </div>
   </div>
 </section>
 
@@ -1158,8 +1393,67 @@ body {
   <div class="eyebrow">02 — Where to move next</div>
   <div class="strat-header">
     <h2 class="strat-h">A direction, not a<br>prescription. <span>Here's<br>how we think about it.</span></h2>
-    <div class="strat-quote">"The product should feel as considered as the service Elva provides. Every screen should feel like someone thought carefully about this moment."</div>
+    <div class="strat-quote">The product should feel as considered as the service Elva provides. Every screen should feel like someone thought carefully about this moment.</div>
   </div>
+</section>
+
+
+<!-- ══ SLIDE — BRAND FEELING ══ -->
+<section class="slide" id="s-brand-feeling" data-step="0">
+  <div class="eyebrow">Brand feeling</div>
+  <h2 class="bf-h">Relocation is one of the most emotional moments in someone's career. <span>The product should feel that way.</span></h2>
+
+  <div class="spectrum-wrap">
+    <div class="spectrum-panels">
+
+      <!-- Warm side -->
+      <div class="sp-side sp-warm">
+        <div class="bf-warm-content">
+          <div class="sp-ref-label">Airbnb</div>
+          <div class="sp-words">
+            <span class="sp-word">Trust</span>
+            <span class="sp-word">Tailored</span>
+          </div>
+        </div>
+        <div class="sp-thumb bf-warm-thumb">
+          <span class="sp-thumb-lbl">Video placeholder</span>
+        </div>
+      </div>
+
+      <!-- Cool side -->
+      <div class="sp-side sp-cool">
+        <div class="bf-cool-content">
+          <div class="sp-ref-label">Revolut</div>
+          <div class="sp-words">
+            <span class="sp-word">Aspirational</span>
+            <span class="sp-word">Precision</span>
+          </div>
+        </div>
+        <div class="sp-thumb bf-cool-thumb">
+          <span class="sp-thumb-lbl">Video placeholder</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Spectrum bar -->
+    <div class="spectrum-bar-area">
+      <div class="spectrum-bar">
+        <div class="elva-mkr">
+          <div class="elva-mkr-inner">
+            <span class="elva-mkr-pill">Elva</span>
+            <div class="elva-mkr-stem"></div>
+          </div>
+        </div>
+      </div>
+      <div class="spectrum-pole-labels">
+        <span>Warm</span>
+        <span>Cool</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal-hint">click or press → to reveal</div>
 </section>
 
 
@@ -1214,34 +1508,40 @@ body {
 <!-- ══ SLIDE 4 — BENTO ══ -->
 <section class="slide" id="s-feel">
   <div class="eyebrow">03 — What Elva should feel like</div>
+  <h2 class="strat-mini-h">Principles applied.</h2>
   <div class="bento" id="bento">
 
-    <!-- Cell 1: Progress (spans both rows) -->
+    <!-- Cell 1: Cards (spans both rows) -->
     <div class="bc bc-progress">
       <div class="bc-n">Principle 01</div>
-      <div class="bc-title">Progress that breathes</div>
-      <div class="bc-desc">Animated bars replace cold counters. Same data — entirely different emotional effect.</div>
-      <div class="prog-demo">
-        <div class="pd-vs">elevated</div>
-        <div class="pd-rows">
-          <div class="pd-row">
-            <div class="pd-meta"><span class="pd-name">Yuki Tanaka</span><span class="pd-pct">78%</span></div>
-            <div class="pd-track"><div class="pd-fill" style="--w:78%;background:var(--orange)"></div></div>
-          </div>
-          <div class="pd-row">
-            <div class="pd-meta"><span class="pd-name">Marco Ricci</span><span class="pd-pct">52%</span></div>
-            <div class="pd-track"><div class="pd-fill" style="--w:52%;background:var(--s-blue)"></div></div>
-          </div>
-          <div class="pd-row">
-            <div class="pd-meta"><span class="pd-name">Amara Sesay</span><span class="pd-pct">35%</span></div>
-            <div class="pd-track"><div class="pd-fill" style="--w:35%;background:var(--s-amber)"></div></div>
-          </div>
+      <div class="bc-title">Depth on demand</div>
+      <div class="bc-desc">Cards lift on hover — subtle, but tells you the interface is alive.</div>
+      <div class="card-demo">
+        <div class="demo-card">
+          <div class="demo-av">YT</div>
+          <div><div class="demo-name">Yuki Tanaka</div><div class="demo-sub">Japan → Finland · 78%</div></div>
         </div>
-        <div class="pd-vs">vs v1</div>
-        <div class="v1-counter">
-          <span class="v1-counter-text">0 of 12 tasks completed</span>
-          <div class="v1-counter-bar"></div>
+        <div class="demo-card">
+          <div class="demo-av" style="background:var(--s-blue-bg);color:var(--s-blue)">MR</div>
+          <div><div class="demo-name">Marco Ricci</div><div class="demo-sub">Italy → Sweden · 52%</div></div>
         </div>
+        <div class="demo-card">
+          <div class="demo-av" style="background:var(--s-green-bg);color:var(--s-green)">AS</div>
+          <div><div class="demo-name">Amara Sesay</div><div class="demo-sub">Ghana → Netherlands · 91%</div></div>
+        </div>
+        <div class="demo-card">
+          <div class="demo-av" style="background:var(--s-amber-bg);color:var(--s-amber)">LD</div>
+          <div><div class="demo-name">Léa Dubois</div><div class="demo-sub">France → Ireland · 34%</div></div>
+        </div>
+        <div class="demo-card">
+          <div class="demo-av" style="background:var(--s-purple-bg);color:var(--s-purple)">PP</div>
+          <div><div class="demo-name">Priya Patel</div><div class="demo-sub">India → Germany · 67%</div></div>
+        </div>
+        <div class="demo-card">
+          <div class="demo-av" style="background:#FCE7F3;color:#BE185D">SK</div>
+          <div><div class="demo-name">Sofia Kim</div><div class="demo-sub">South Korea → Norway · 45%</div></div>
+        </div>
+        <div class="demo-hint">hover to feel it</div>
       </div>
     </div>
 
@@ -1271,6 +1571,7 @@ body {
 
     <!-- Cell 3: Completion moment -->
     <div class="bc bc-check">
+      <button class="replay-btn" id="replay-check" title="Replay"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 .49-4"/></svg></button>
       <div class="bc-n">Principle 03</div>
       <div class="bc-title">The earned moment</div>
       <div class="bc-desc">Completing a step deserves a beat of recognition — not just a state flip.</div>
@@ -1280,25 +1581,30 @@ body {
             <path class="check-path" id="check-path" d="M5 13l5 5 11-11"/>
           </svg>
         </div>
-        <span class="check-hint">click to replay</span>
       </div>
     </div>
 
-    <!-- Cell 4: Cards respond -->
+    <!-- Cell 4: Progress -->
     <div class="bc bc-cards">
+      <button class="replay-btn" id="replay-prog" title="Replay"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 .49-4"/></svg></button>
       <div class="bc-n">Principle 04</div>
-      <div class="bc-title">Depth on demand</div>
-      <div class="bc-desc">Cards lift on hover — subtle, but tells you the interface is alive.</div>
-      <div class="card-demo">
-        <div class="demo-card">
-          <div class="demo-av">YT</div>
-          <div><div class="demo-name">Yuki Tanaka</div><div class="demo-sub">Japan → Finland · 78%</div></div>
+      <div class="bc-title">Progress that breathes</div>
+      <div class="bc-desc">Animated bars replace cold counters. Same data — entirely different emotional effect.</div>
+      <div class="prog-demo">
+        <div class="pd-rows">
+          <div class="pd-row">
+            <div class="pd-meta"><span class="pd-name">Yuki Tanaka</span><span class="pd-pct">78%</span></div>
+            <div class="pd-track"><div class="pd-fill" style="--w:78%;background:var(--orange)"></div></div>
+          </div>
+          <div class="pd-row">
+            <div class="pd-meta"><span class="pd-name">Marco Ricci</span><span class="pd-pct">52%</span></div>
+            <div class="pd-track"><div class="pd-fill" style="--w:52%;background:var(--s-blue)"></div></div>
+          </div>
+          <div class="pd-row">
+            <div class="pd-meta"><span class="pd-name">Amara Sesay</span><span class="pd-pct">35%</span></div>
+            <div class="pd-track"><div class="pd-fill" style="--w:35%;background:var(--s-amber)"></div></div>
+          </div>
         </div>
-        <div class="demo-card">
-          <div class="demo-av" style="background:var(--s-blue-bg);color:var(--s-blue)">MR</div>
-          <div><div class="demo-name">Marco Ricci</div><div class="demo-sub">Italy → Sweden · 52%</div></div>
-        </div>
-        <div class="demo-hint">hover to feel it</div>
       </div>
     </div>
 
@@ -1328,153 +1634,9 @@ body {
   <div class="eyebrow">04 — Specific example</div>
   <h1 class="ei-h">One screen.<br><em>A new direction.</em></h1>
   <p style="font-size:15px;color:var(--ink-muted);line-height:1.7;max-width:540px;">The bookings page — rebuilt within Elva's existing brand. Same sidebar, same colours, consistent craft.</p>
-  <div class="ei-cards">
-    <div class="ei-card">
-      <div class="ei-num">1</div>
-      <div><div class="ei-card-title">My bookings</div><div class="ei-card-sub">New design &rarr; before/after comparison</div></div>
-    </div>
-  </div>
 </section>
 
 
-
-
-<!-- ══ SLIDE 8 — BOOKINGS: NEW DESIGN ══ -->
-<section class="slide slide-dark" id="s-ex-bk-new">
-  <div class="dark-hdr">
-    <div class="eyebrow">04 — Example</div>
-    <h2>My bookings. <span>Redesigned.</span></h2>
-    <p>Calendar-first appointment view and boarding pass card — all within Elva's existing brand.</p>
-  </div>
-  <div style="display:flex;flex-direction:column;gap:7px;max-width:860px;width:100%;margin:0 auto;">
-    <div class="ex-col-label">↳ My bookings</div>
-    <div class="tl-wrap">
-      <div class="tl-chrome">
-        <div class="tl-dots"><div class="tl-dot r"></div><div class="tl-dot y"></div><div class="tl-dot g"></div></div>
-        <div class="tl-url">app.withelva.com / bookings</div>
-        <div></div>
-      </div>
-      <div class="tl-body">
-        <div class="tl-sb">
-          <div class="sb-logo"><img src="elva-logo.png" alt="Elva"></div>
-          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 7.5L7.5 2 13 7.5M3.5 6V12.5H6.5V9H8.5V12.5H11.5V6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</div>
-          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 4h11M2 7.5h7M2 11h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Tasks</div>
-          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><rect x="2" y="2" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 7.5h5M5 5h3M5 10h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Vault</div>
-          <div class="sb-item on"><svg viewBox="0 0 15 15" fill="none"><rect x="2" y="3" width="11" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 3V2M10 3V2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2 6h11" stroke="currentColor" stroke-width="1.3"/></svg>Bookings</div>
-          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M13 9.5C13 10.3 12.3 11 11.5 11H4.5L2 13V4.5C2 3.7 2.7 3 3.5 3H11.5C12.3 3 13 3.7 13 4.5V9.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Let's talk</div>
-          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7.5 4.5V7.5L9.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Timeline</div>
-          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 12C2 9.5 4.5 7.5 7.5 7.5S13 9.5 13 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="7.5" cy="4.5" r="2.5" stroke="currentColor" stroke-width="1.3"/></svg>Wellbeing hub</div>
-          <div class="sb-bottom"><div class="sb-av">RT</div><div><div class="sb-uname">Ramya T.</div><div class="sb-urole">Relocating to Finland</div></div></div>
-        </div>
-        <!-- CRAFTED BOOKINGS MAIN -->
-        <div class="bk-new-main">
-          <div class="bk-new-title">My bookings</div>
-          <div class="bk-new-sub">2 upcoming · next in 12 days</div>
-
-          <!-- Calendar appointment card -->
-          <div class="cal-card">
-            <div class="cal-card-hdr">
-              <div class="cal-hdr-left">
-                <div class="cal-org-mark"><img src="thumbprint.png" alt="Biometric"></div>
-                <div class="cal-card-hdr-l">
-                  <h4>Biometric Appointment</h4>
-                  <p>VFS Global · Delhi, India</p>
-                </div>
-              </div>
-              <div class="cal-confirmed">
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#16A34A" stroke-width="1.2"/><path d="M2.8 5l1.5 1.5 2.7-2.7" stroke="#16A34A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Confirmed
-              </div>
-            </div>
-            <div class="cal-3col">
-              <!-- When -->
-              <div class="cal-3col-sec">
-                <div class="cal-3col-label">When</div>
-                <div class="cal-grid-block">
-                <div class="cal-month-label">May 2026</div>
-                <div class="cal-mini-grid">
-                  <div class="cal-mini-wd">M</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">W</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">F</div><div class="cal-mini-wd">S</div><div class="cal-mini-wd">S</div>
-                  <div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d">1</div><div class="cal-mini-d">2</div><div class="cal-mini-d">3</div>
-                  <div class="cal-mini-d">4</div><div class="cal-mini-d">5</div><div class="cal-mini-d">6</div><div class="cal-mini-d">7</div><div class="cal-mini-d">8</div><div class="cal-mini-d">9</div><div class="cal-mini-d">10</div>
-                  <div class="cal-mini-d">11</div><div class="cal-mini-d">12</div><div class="cal-mini-d">13</div><div class="cal-mini-d">14</div><div class="cal-mini-d">15</div><div class="cal-mini-d">16</div><div class="cal-mini-d">17</div>
-                  <div class="cal-mini-d">18</div><div class="cal-mini-d">19</div><div class="cal-mini-d">20</div><div class="cal-mini-d">21</div><div class="cal-mini-d sel">22</div><div class="cal-mini-d">23</div><div class="cal-mini-d">24</div>
-                  <div class="cal-mini-d">25</div><div class="cal-mini-d">26</div><div class="cal-mini-d">27</div><div class="cal-mini-d">28</div><div class="cal-mini-d">29</div><div class="cal-mini-d">30</div><div class="cal-mini-d">31</div>
-                </div>
-                </div>
-                <div class="cal-when-time">02:00</div>
-                <div class="cal-when-date">Friday, 22 May 2026</div>
-                <button class="cal-action-btn">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="1.5" stroke="#E8622A" stroke-width="1.2"/><path d="M4 2V1M10 2V1" stroke="#E8622A" stroke-width="1.2" stroke-linecap="round"/><path d="M1 5.5h12" stroke="#E8622A" stroke-width="1.2"/><rect x="4" y="8" width="2" height="2" rx="0.5" fill="#E8622A"/></svg>
-                  Add to calendar
-                </button>
-              </div>
-              <!-- Where -->
-              <div class="cal-3col-sec">
-                <div class="cal-3col-label">Where</div>
-                <div class="cal-map-wrap">
-                  <img src="map.png" alt="Map" class="cal-map-img">
-                  <div class="cal-map-pin">
-                    <svg width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="11" cy="11" r="11" fill="#E8622A" opacity="0.18"/>
-                      <path d="M11 0 C6.03 0 2 4.03 2 9 C2 15.75 11 25 11 25 C11 25 20 15.75 20 9 C20 4.03 15.97 0 11 0Z" fill="#E8622A"/>
-                      <circle cx="11" cy="9" r="3.5" fill="white"/>
-                    </svg>
-                  </div>
-                </div>
-                <div class="cal-addr">VFS Global Centre<br>Connaught Place<br>New Delhi, India</div>
-                <button class="cal-action-btn">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5C3 8 7 13 7 13C7 13 11 8 11 5C11 2.8 9.2 1 7 1Z" stroke="#E8622A" stroke-width="1.2" stroke-linejoin="round"/><circle cx="7" cy="5" r="1.5" fill="#E8622A"/></svg>
-                  Open in Maps
-                </button>
-              </div>
-            </div>
-            <div class="cal-footer">
-              <span>📋 Documents required — passport, photos, form</span>
-              <span class="cal-footer-link">View checklist →</span>
-            </div>
-          </div>
-
-          <!-- Boarding pass -->
-          <div class="bp-card">
-            <div class="bp-top">
-              <div class="bp-airline">
-                <div class="bp-ay-mark"><img src="finnair-logo.png" alt="Finnair"></div>
-                <div><div class="bp-al-name">Finnair</div><div class="bp-fcode">AYAY1234</div></div>
-              </div>
-              <div class="bp-class-tag">Economy</div>
-            </div>
-            <div class="bp-route-row">
-              <div class="bp-city">
-                <div class="bp-iata">DEL</div>
-                <div class="bp-city-name">New Delhi</div>
-                <div class="bp-time-val">16:30</div>
-              </div>
-              <div class="bp-mid">
-                <div class="bp-dur">4h 15m</div>
-                <svg class="bp-arc" viewBox="0 0 100 22" fill="none" height="22">
-                  <path d="M4,18 Q50,-8 96,18" stroke="#E8622A" stroke-width="1.5" stroke-dasharray="3,3"/>
-                  <text x="50" y="10" text-anchor="middle" font-size="9" fill="#E8622A">✈</text>
-                </svg>
-                <div class="bp-direct">Direct</div>
-              </div>
-              <div class="bp-city" style="text-align:right">
-                <div class="bp-iata">HEL</div>
-                <div class="bp-city-name">Helsinki</div>
-                <div class="bp-time-val">20:45</div>
-              </div>
-            </div>
-            <div class="bp-tear"></div>
-            <div class="bp-footer">
-              <div class="bp-pax-block"><div class="bp-pax-label">Passenger</div><div class="bp-pax">Ramya Thalmann</div></div>
-              <div class="bp-date-block"><div class="bp-date-label">Date</div><div class="bp-date-val">Fri, Jun 5 2026</div></div>
-            </div>
-          </div>
-
-        </div><!-- /bk-new-main -->
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- ══ SLIDE 9 — BOOKINGS: BEFORE / AFTER ══ -->
@@ -1550,22 +1712,28 @@ body {
                 <div class="cal-3col-sec">
                   <div class="cal-3col-label">When</div>
                   <div class="cal-grid-block">
-                  <div class="cal-month-label">May 2026</div>
-                  <div class="cal-mini-grid">
-                    <div class="cal-mini-wd">M</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">W</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">F</div><div class="cal-mini-wd">S</div><div class="cal-mini-wd">S</div>
-                    <div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d">1</div><div class="cal-mini-d">2</div><div class="cal-mini-d">3</div>
-                    <div class="cal-mini-d">4</div><div class="cal-mini-d">5</div><div class="cal-mini-d">6</div><div class="cal-mini-d">7</div><div class="cal-mini-d">8</div><div class="cal-mini-d">9</div><div class="cal-mini-d">10</div>
-                    <div class="cal-mini-d">11</div><div class="cal-mini-d">12</div><div class="cal-mini-d">13</div><div class="cal-mini-d">14</div><div class="cal-mini-d">15</div><div class="cal-mini-d">16</div><div class="cal-mini-d">17</div>
-                    <div class="cal-mini-d">18</div><div class="cal-mini-d">19</div><div class="cal-mini-d">20</div><div class="cal-mini-d">21</div><div class="cal-mini-d sel">22</div><div class="cal-mini-d">23</div><div class="cal-mini-d">24</div>
-                    <div class="cal-mini-d">25</div><div class="cal-mini-d">26</div><div class="cal-mini-d">27</div><div class="cal-mini-d">28</div><div class="cal-mini-d">29</div><div class="cal-mini-d">30</div><div class="cal-mini-d">31</div>
+                    <div class="cal-grid-left">
+                      <div class="cal-month-label">May 2026</div>
+                      <div class="cal-mini-grid">
+                        <div class="cal-mini-wd">M</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">W</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">F</div><div class="cal-mini-wd">S</div><div class="cal-mini-wd">S</div>
+                        <div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d">1</div><div class="cal-mini-d">2</div><div class="cal-mini-d">3</div>
+                        <div class="cal-mini-d">4</div><div class="cal-mini-d">5</div><div class="cal-mini-d">6</div><div class="cal-mini-d">7</div><div class="cal-mini-d">8</div><div class="cal-mini-d">9</div><div class="cal-mini-d">10</div>
+                        <div class="cal-mini-d">11</div><div class="cal-mini-d">12</div><div class="cal-mini-d">13</div><div class="cal-mini-d">14</div><div class="cal-mini-d">15</div><div class="cal-mini-d">16</div><div class="cal-mini-d">17</div>
+                        <div class="cal-mini-d">18</div><div class="cal-mini-d">19</div><div class="cal-mini-d">20</div><div class="cal-mini-d">21</div><div class="cal-mini-d sel">22</div><div class="cal-mini-d">23</div><div class="cal-mini-d">24</div>
+                        <div class="cal-mini-d">25</div><div class="cal-mini-d">26</div><div class="cal-mini-d">27</div><div class="cal-mini-d">28</div><div class="cal-mini-d">29</div><div class="cal-mini-d">30</div><div class="cal-mini-d">31</div>
+                      </div>
+                    </div>
+                    <div class="cal-grid-right">
+                      <div class="cal-when-time">02:00</div>
+                    </div>
                   </div>
+                  <div class="cal-sec-bottom">
+                    <div class="cal-addr">Friday, 22 May 2026</div>
+                    <button class="cal-action-btn">
+                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 2V1M10 2V1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M1 5.5h12" stroke="currentColor" stroke-width="1.2"/><rect x="4" y="8" width="2" height="2" rx="0.5" fill="currentColor"/></svg>
+                      Add to calendar
+                    </button>
                   </div>
-                  <div class="cal-when-time">02:00</div>
-                  <div class="cal-when-date">Friday, 22 May 2026</div>
-                  <button class="cal-action-btn">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="1.5" stroke="#E8622A" stroke-width="1.2"/><path d="M4 2V1M10 2V1" stroke="#E8622A" stroke-width="1.2" stroke-linecap="round"/><path d="M1 5.5h12" stroke="#E8622A" stroke-width="1.2"/><rect x="4" y="8" width="2" height="2" rx="0.5" fill="#E8622A"/></svg>
-                    Add to calendar
-                  </button>
                 </div>
                 <div class="cal-3col-sec">
                   <div class="cal-3col-label">Where</div>
@@ -1579,11 +1747,13 @@ body {
                       </svg>
                     </div>
                   </div>
-                  <div class="cal-addr">VFS Global Centre<br>Connaught Place<br>New Delhi, India</div>
-                  <button class="cal-action-btn">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5C3 8 7 13 7 13C7 13 11 8 11 5C11 2.8 9.2 1 7 1Z" stroke="#E8622A" stroke-width="1.2" stroke-linejoin="round"/><circle cx="7" cy="5" r="1.5" fill="#E8622A"/></svg>
-                    Open in Maps
-                  </button>
+                  <div class="cal-sec-bottom">
+                    <div class="cal-addr" style="margin-bottom:0">VFS Global Centre<br>Connaught Place<br>New Delhi, India</div>
+                    <button class="cal-action-btn">
+                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5C3 8 7 13 7 13C7 13 11 8 11 5C11 2.8 9.2 1 7 1Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="7" cy="5" r="1.5" fill="currentColor"/></svg>
+                      Open in Maps
+                    </button>
+                  </div>
                 </div>
               </div>
               <div class="cal-footer"><span>📋 Documents required</span><span class="cal-footer-link">View checklist →</span></div>
@@ -1597,7 +1767,7 @@ body {
                 <div class="bp-city"><div class="bp-iata">DEL</div><div class="bp-city-name">New Delhi</div><div class="bp-time-val">16:30</div></div>
                 <div class="bp-mid">
                   <div class="bp-dur">4h 15m</div>
-                  <svg class="bp-arc" viewBox="0 0 100 22" fill="none" height="22"><path d="M4,18 Q50,-8 96,18" stroke="#E8622A" stroke-width="1.5" stroke-dasharray="3,3"/><text x="50" y="10" text-anchor="middle" font-size="9" fill="#E8622A">✈</text></svg>
+                  <svg class="bp-arc" viewBox="0 0 100 22" fill="none" height="22"><path d="M4,18 Q50,-8 96,18" stroke="#C8C8C8" stroke-width="1.5" stroke-dasharray="3,3"/><g class="bp-plane-g"><text x="50" y="10" text-anchor="middle" font-size="9" fill="#E8622A">✈</text></g></svg>
                   <div class="bp-direct">Direct</div>
                 </div>
                 <div class="bp-city" style="text-align:right"><div class="bp-iata">HEL</div><div class="bp-city-name">Helsinki</div><div class="bp-time-val">20:45</div></div>
@@ -1620,6 +1790,147 @@ body {
 </section>
 
 
+
+
+<!-- ══ SLIDE 8 — BOOKINGS: NEW DESIGN ══ -->
+<section class="slide slide-dark" id="s-ex-bk-new" style="padding:28px 48px;justify-content:center;">
+  <div style="display:flex;flex-direction:column;gap:14px;max-width:800px;width:100%;margin:0 auto;">
+    <div class="eyebrow">04 — Example</div>
+    <div class="tl-wrap">
+      <div class="tl-chrome">
+        <div class="tl-dots"><div class="tl-dot r"></div><div class="tl-dot y"></div><div class="tl-dot g"></div></div>
+        <div class="tl-url">app.withelva.com / bookings</div>
+        <div></div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-sb">
+          <div class="sb-logo"><img src="elva-logo.png" alt="Elva"></div>
+          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 7.5L7.5 2 13 7.5M3.5 6V12.5H6.5V9H8.5V12.5H11.5V6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</div>
+          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 4h11M2 7.5h7M2 11h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Tasks</div>
+          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><rect x="2" y="2" width="11" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 7.5h5M5 5h3M5 10h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Vault</div>
+          <div class="sb-item on"><svg viewBox="0 0 15 15" fill="none"><rect x="2" y="3" width="11" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 3V2M10 3V2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2 6h11" stroke="currentColor" stroke-width="1.3"/></svg>Bookings</div>
+          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M13 9.5C13 10.3 12.3 11 11.5 11H4.5L2 13V4.5C2 3.7 2.7 3 3.5 3H11.5C12.3 3 13 3.7 13 4.5V9.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Let's talk</div>
+          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7.5 4.5V7.5L9.5 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Timeline</div>
+          <div class="sb-item"><svg viewBox="0 0 15 15" fill="none"><path d="M2 12C2 9.5 4.5 7.5 7.5 7.5S13 9.5 13 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="7.5" cy="4.5" r="2.5" stroke="currentColor" stroke-width="1.3"/></svg>Wellbeing hub</div>
+          <div class="sb-bottom"><div class="sb-av">RT</div><div><div class="sb-uname">Ramya T.</div><div class="sb-urole">Relocating to Finland</div></div></div>
+        </div>
+        <!-- CRAFTED BOOKINGS MAIN -->
+        <div class="bk-new-main">
+          <div class="bk-new-title">My bookings</div>
+          <div class="bk-new-sub">2 upcoming · next in 12 days</div>
+
+          <!-- Calendar appointment card -->
+          <div class="cal-card">
+            <div class="cal-card-hdr">
+              <div class="cal-hdr-left">
+                <div class="cal-org-mark"><img src="thumbprint.png" alt="Biometric"></div>
+                <div class="cal-card-hdr-l">
+                  <h4>Biometric Appointment</h4>
+                  <p>VFS Global · Delhi, India</p>
+                </div>
+              </div>
+              <div class="cal-confirmed">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#16A34A" stroke-width="1.2"/><path d="M2.8 5l1.5 1.5 2.7-2.7" stroke="#16A34A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Confirmed
+              </div>
+            </div>
+            <div class="cal-3col">
+              <!-- When -->
+              <div class="cal-3col-sec">
+                <div class="cal-3col-label">When</div>
+                <div class="cal-grid-block">
+                  <div class="cal-grid-left">
+                    <div class="cal-month-label">May 2026</div>
+                    <div class="cal-mini-grid">
+                      <div class="cal-mini-wd">M</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">W</div><div class="cal-mini-wd">T</div><div class="cal-mini-wd">F</div><div class="cal-mini-wd">S</div><div class="cal-mini-wd">S</div>
+                      <div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d faint"></div><div class="cal-mini-d">1</div><div class="cal-mini-d">2</div><div class="cal-mini-d">3</div>
+                      <div class="cal-mini-d">4</div><div class="cal-mini-d">5</div><div class="cal-mini-d">6</div><div class="cal-mini-d">7</div><div class="cal-mini-d">8</div><div class="cal-mini-d">9</div><div class="cal-mini-d">10</div>
+                      <div class="cal-mini-d">11</div><div class="cal-mini-d">12</div><div class="cal-mini-d">13</div><div class="cal-mini-d">14</div><div class="cal-mini-d">15</div><div class="cal-mini-d">16</div><div class="cal-mini-d">17</div>
+                      <div class="cal-mini-d">18</div><div class="cal-mini-d">19</div><div class="cal-mini-d">20</div><div class="cal-mini-d">21</div><div class="cal-mini-d sel">22</div><div class="cal-mini-d">23</div><div class="cal-mini-d">24</div>
+                      <div class="cal-mini-d">25</div><div class="cal-mini-d">26</div><div class="cal-mini-d">27</div><div class="cal-mini-d">28</div><div class="cal-mini-d">29</div><div class="cal-mini-d">30</div><div class="cal-mini-d">31</div>
+                    </div>
+                  </div>
+                  <div class="cal-grid-right">
+                    <div class="cal-when-time">02:00</div>
+                  </div>
+                </div>
+                <div class="cal-sec-bottom">
+                  <div class="cal-addr">Friday, 22 May 2026</div>
+                  <button class="cal-action-btn">
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 2V1M10 2V1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M1 5.5h12" stroke="currentColor" stroke-width="1.2"/><rect x="4" y="8" width="2" height="2" rx="0.5" fill="currentColor"/></svg>
+                    Add to calendar
+                  </button>
+                </div>
+              </div>
+              <!-- Where -->
+              <div class="cal-3col-sec">
+                <div class="cal-3col-label">Where</div>
+                <div class="cal-map-wrap">
+                  <img src="map.png" alt="Map" class="cal-map-img">
+                  <div class="cal-map-pin">
+                    <svg width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="11" cy="11" r="11" fill="#E8622A" opacity="0.18"/>
+                      <path d="M11 0 C6.03 0 2 4.03 2 9 C2 15.75 11 25 11 25 C11 25 20 15.75 20 9 C20 4.03 15.97 0 11 0Z" fill="#E8622A"/>
+                      <circle cx="11" cy="9" r="3.5" fill="white"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="cal-sec-bottom">
+                  <div class="cal-addr" style="margin-bottom:0">VFS Global Centre<br>Connaught Place, New Delhi</div>
+                  <button class="cal-action-btn">
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5C3 8 7 13 7 13C7 13 11 8 11 5C11 2.8 9.2 1 7 1Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><circle cx="7" cy="5" r="1.5" fill="currentColor"/></svg>
+                    Open in Maps
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="cal-footer">
+              <span>📋 Documents required — passport, photos, form</span>
+              <span class="cal-footer-link">View checklist →</span>
+            </div>
+          </div>
+
+          <!-- Boarding pass -->
+          <div class="bp-card">
+            <div class="bp-top">
+              <div class="bp-airline">
+                <div class="bp-ay-mark"><img src="finnair-logo.png" alt="Finnair"></div>
+                <div><div class="bp-al-name">Finnair</div><div class="bp-fcode">AYAY1234</div></div>
+              </div>
+              <div class="bp-class-tag">Economy</div>
+            </div>
+            <div class="bp-route-row">
+              <div class="bp-city">
+                <div class="bp-iata">DEL</div>
+                <div class="bp-city-name">New Delhi</div>
+                <div class="bp-time-val">16:30</div>
+              </div>
+              <div class="bp-mid">
+                <div class="bp-dur">4h 15m</div>
+                <svg class="bp-arc" viewBox="0 0 100 22" fill="none" height="22">
+                  <path d="M4,18 Q50,-8 96,18" stroke="#C8C8C8" stroke-width="1.5" stroke-dasharray="3,3"/>
+                  <g class="bp-plane-g"><text x="50" y="10" text-anchor="middle" font-size="9" fill="#E8622A">✈</text></g>
+                </svg>
+                <div class="bp-direct">Direct</div>
+              </div>
+              <div class="bp-city" style="text-align:right">
+                <div class="bp-iata">HEL</div>
+                <div class="bp-city-name">Helsinki</div>
+                <div class="bp-time-val">20:45</div>
+              </div>
+            </div>
+            <div class="bp-tear"></div>
+            <div class="bp-footer">
+              <div class="bp-pax-block"><div class="bp-pax-label">Passenger</div><div class="bp-pax">Ramya Thalmann</div></div>
+              <div class="bp-date-block"><div class="bp-date-label">Date</div><div class="bp-date-val">Fri, Jun 5 2026</div></div>
+            </div>
+          </div>
+
+        </div><!-- /bk-new-main -->
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <!-- ══ SLIDE 6 — NEXT STEPS ══ -->
@@ -1655,6 +1966,30 @@ const DARK_SLIDES = new Set(['s-next','s-ex-bk-new']);
 const REVEAL_IDS  = ['s-strategy-2', 's-strategy-3'];
 const revealState = { 's-strategy-2': 0, 's-strategy-3': 0 };
 
+// Brand feeling slide — custom step system
+const BF_ID = 's-brand-feeling';
+const BF_TOTAL = 4;
+let bfStep = 0;
+function resetBF() {
+  bfStep = 0;
+  document.getElementById(BF_ID).setAttribute('data-step', '0');
+  updateBFHint();
+}
+function tryBF() {
+  if (bfStep < BF_TOTAL) {
+    bfStep++;
+    document.getElementById(BF_ID).setAttribute('data-step', String(bfStep));
+    updateBFHint();
+    return true;
+  }
+  return false;
+}
+function updateBFHint() {
+  const hint = document.querySelector('#' + BF_ID + ' .reveal-hint');
+  if (!hint) return;
+  hint.textContent = bfStep >= BF_TOTAL ? 'press → for next slide' : 'click or press → to reveal';
+}
+
 function revealItems(slideId) {
   return Array.from(document.getElementById(slideId).querySelectorAll('.reveal-item'));
 }
@@ -1686,6 +2021,7 @@ function goTo(n) {
   n = Math.max(0, Math.min(slides.length - 1, n));
   const sid = slides[n]?.id;
   if (REVEAL_IDS.includes(sid)) resetReveal(sid);
+  if (sid === BF_ID) resetBF();
   slides[n].scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -1702,8 +2038,8 @@ function setSlide(n) {
   });
   counter.style.color = onDark ? 'rgba(255,255,255,0.3)' : 'var(--ink-faint)';
 
-  if (n === 6 && !bentoFired) { bentoFired = true; fireBento(); }
-  if (n === 8 && !tlFired)    { tlFired = true;    fireTl();    }
+  if (n === 7 && !bentoFired) { bentoFired = true; fireBento(); }
+  if (n === 9 && !tlFired)    { tlFired = true;    fireTl();    }
 }
 
 function fireBento() {
@@ -1772,6 +2108,7 @@ document.addEventListener('keydown', e => {
     e.preventDefault();
     const sid = slides[current]?.id;
     if (REVEAL_IDS.includes(sid) && tryReveal(sid)) return;
+    if (sid === BF_ID && tryBF()) return;
     goTo(current + 1);
   } else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key)) {
     e.preventDefault(); goTo(current - 1);
@@ -1788,15 +2125,39 @@ REVEAL_IDS.forEach(id => {
   });
 });
 
+// Click-to-step on brand feeling slide
+const bfEl = document.getElementById(BF_ID);
+if (bfEl) bfEl.addEventListener('click', () => {
+  if (slides[current]?.id === BF_ID) {
+    if (!tryBF()) goTo(current + 1);
+  }
+});
+
 // Dot clicks
 dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
 
-// Checkmark replay on click
-document.getElementById('check-ring').addEventListener('click', () => {
+// Checkmark replay
+function replayCheck() {
   const p = document.getElementById('check-path');
+  p.style.transition = 'none';
   p.classList.remove('drawn');
-  void p.offsetWidth;
-  p.classList.add('drawn');
+  p.getBoundingClientRect();
+  p.style.transition = '';
+  setTimeout(() => p.classList.add('drawn'), 20);
+}
+document.getElementById('check-ring').addEventListener('click', replayCheck);
+document.getElementById('replay-check').addEventListener('click', replayCheck);
+
+// Progress bars replay
+document.getElementById('replay-prog').addEventListener('click', () => {
+  const fills = document.querySelectorAll('.bc-cards .pd-fill');
+  fills.forEach(el => {
+    el.style.transition = 'none';
+    el.classList.remove('go');
+  });
+  fills[0].getBoundingClientRect();
+  fills.forEach(el => { el.style.transition = ''; });
+  setTimeout(() => fills.forEach(el => el.classList.add('go')), 20);
 });
 
 setSlide(0);
