@@ -314,10 +314,10 @@
 
     .compare-header {
       display: grid;
-      grid-template-columns: 200px 1fr 1fr;
-      gap: 1rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
       padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 2px solid var(--border);
     }
     .compare-col-head {
       font-size: 11px;
@@ -325,20 +325,29 @@
       letter-spacing: 0.10em;
       text-transform: uppercase;
       color: var(--muted);
+      padding: 0 1.5rem 0 0;
     }
+    .compare-col-head:last-child { padding-left: 1.5rem; border-left: 1px solid var(--border); }
     .compare-col-head.accent { color: var(--dark); }
 
     .compare-row {
       display: grid;
-      grid-template-columns: 200px 1fr 1fr;
-      gap: 1rem;
-      padding: 1.1rem 0;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
       border-bottom: 1px solid var(--border);
       opacity: 0;
-      transform: translateX(-20px);
+      transform: translateY(12px);
       transition: opacity 500ms ease, transform 500ms ease;
     }
-    .compare-row.visible { opacity: 1; transform: translateX(0); }
+    .compare-row.visible { opacity: 1; transform: translateY(0); }
+
+    .compare-cell {
+      padding: 1.5rem 1.5rem 1.5rem 0;
+    }
+    .compare-cell:last-child {
+      padding-left: 1.5rem;
+      border-left: 1px solid var(--border);
+    }
 
     .compare-label {
       font-size: 11px;
@@ -346,13 +355,12 @@
       letter-spacing: 0.10em;
       text-transform: uppercase;
       color: var(--muted);
-      align-self: center;
+      margin-bottom: 0.4rem;
     }
     .compare-val {
       font-size: 16px;
       color: var(--body);
-      line-height: 1.5;
-      align-self: center;
+      line-height: 1.4;
     }
     .compare-val.bold { font-weight: 600; color: var(--dark); }
 
@@ -649,11 +657,8 @@
       }
       .stat-item:last-child { border-bottom: none; }
       .engagement-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .compare-header, .compare-row {
-        grid-template-columns: 1fr 1fr;
-      }
-      .compare-header > :first-child,
-      .compare-row > .compare-label { display: none; }
+      .compare-cell { padding: 1rem 1rem 1rem 0; }
+      .compare-cell:last-child { padding-left: 1rem; }
     }
   </style>
 </head>
@@ -663,7 +668,7 @@
   <nav id="nav">
     <a href="/" class="nav-logo">Creoscope</a>
     <div class="nav-right">
-      <a href="mailto:ramya.thalmann@gmail.com" class="nav-email">ramya.thalmann@gmail.com</a>
+      <a href="mailto:ramya.thalmann@gmail.com" class="nav-email" target="_blank" rel="noopener noreferrer">ramya.thalmann@gmail.com</a>
       <span class="avail-pill"><span class="pulse-dot"></span>Available</span>
     </div>
   </nav>
@@ -696,34 +701,58 @@
 
       <div class="comparison">
         <div class="compare-header">
-          <div></div>
           <div class="compare-col-head">Traditional freelancer</div>
           <div class="compare-col-head accent">Fractional (this model)</div>
         </div>
         <div class="compare-row">
-          <div class="compare-label">Work structure</div>
-          <div class="compare-val">Brief → delivery → done</div>
-          <div class="compare-val bold">Ongoing ownership, embedded</div>
+          <div class="compare-cell">
+            <div class="compare-label">Work structure</div>
+            <div class="compare-val">Brief → delivery → done</div>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-label">Work structure</div>
+            <div class="compare-val bold">Ongoing ownership, embedded</div>
+          </div>
         </div>
         <div class="compare-row">
-          <div class="compare-label">Scope ownership</div>
-          <div class="compare-val">Client defines the work</div>
-          <div class="compare-val bold">I define, shape, and carry it</div>
+          <div class="compare-cell">
+            <div class="compare-label">Scope ownership</div>
+            <div class="compare-val">Client defines the work</div>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-label">Scope ownership</div>
+            <div class="compare-val bold">I define, shape, and carry it</div>
+          </div>
         </div>
         <div class="compare-row">
-          <div class="compare-label">Billing</div>
-          <div class="compare-val">Hourly or per project</div>
-          <div class="compare-val bold">Monthly retainer, outcome-oriented</div>
+          <div class="compare-cell">
+            <div class="compare-label">Billing</div>
+            <div class="compare-val">Hourly or per project</div>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-label">Billing</div>
+            <div class="compare-val bold">Monthly retainer, outcome-oriented</div>
+          </div>
         </div>
         <div class="compare-row">
-          <div class="compare-label">Team integration</div>
-          <div class="compare-val">External vendor</div>
-          <div class="compare-val bold">In Slack, in planning, in Figma</div>
+          <div class="compare-cell">
+            <div class="compare-label">Team integration</div>
+            <div class="compare-val">External vendor</div>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-label">Team integration</div>
+            <div class="compare-val bold">In Slack, in planning, in Figma</div>
+          </div>
         </div>
         <div class="compare-row">
-          <div class="compare-label">Strategic input</div>
-          <div class="compare-val">Rarely</div>
-          <div class="compare-val bold">Always — I help shape the roadmap</div>
+          <div class="compare-cell">
+            <div class="compare-label">Strategic input</div>
+            <div class="compare-val">Rarely</div>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-label">Strategic input</div>
+            <div class="compare-val bold">Always — I help shape the roadmap</div>
+          </div>
         </div>
       </div>
     </div>
@@ -854,11 +883,7 @@
     <div>
       <a href="mailto:ramya.thalmann@gmail.com" class="contact-email" target="_blank" rel="noopener noreferrer">ramya.thalmann@gmail.com<span class="link-arrow"><svg width="1em" height="1em" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="0" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><polyline points="8,1 13,5 8,9" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
     </div>
-    <div class="contact-avail">
-      <span class="pulse-dot"></span>
-      Available for new engagements
-    </div>
-    <a href="https://linkedin.com/in/ramya-v-t" target="_blank" rel="noopener noreferrer" class="contact-linkedin">linkedin.com/in/ramya-v-t<span class="link-arrow"><svg width="1em" height="1em" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="0" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><polyline points="8,1 13,5 8,9" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+<a href="https://linkedin.com/in/ramya-v-t" target="_blank" rel="noopener noreferrer" class="contact-linkedin">linkedin.com/in/ramya-v-t<span class="link-arrow"><svg width="1em" height="1em" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="0" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><polyline points="8,1 13,5 8,9" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
   </section>
 
   <script>
