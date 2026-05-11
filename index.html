@@ -3,410 +3,966 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ramya V Thalmann — Fractional Product Designer</title>
+  <title>Creoscope — Ramya Thalmann, Fractional Product Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --color-text-primary: #1a1a18;
-      --color-text-secondary: #5a5a57;
-      --color-text-tertiary: #8a8a85;
-      --color-bg-primary: #ffffff;
-      --color-bg-secondary: #f5f4f0;
-      --color-border-tertiary: rgba(0,0,0,0.10);
-      --color-border-secondary: rgba(0,0,0,0.18);
-      --radius-md: 8px;
-      --radius-lg: 12px;
+      --accent: #1D9E75;
+      --bg: #ffffff;
+      --dark: #111010;
+      --body: #444;
+      --muted: #999;
+      --border: rgba(0,0,0,0.08);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 400;
-      color: var(--color-text-primary);
-      background: var(--color-bg-primary);
+      color: var(--dark);
+      background: var(--bg);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    .page {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 4rem 2rem 6rem;
-    }
-
-    /* Typography */
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--color-text-tertiary);
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 52px;
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.75rem;
-    }
-
-    h1 em { font-style: italic; color: var(--color-text-secondary); }
-
-    h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 28px;
-      font-weight: 400;
-      margin-bottom: 1rem;
-      line-height: 1.3;
-    }
-
-    .intro {
-      font-size: 18px;
-      line-height: 1.75;
-      color: var(--color-text-secondary);
-      max-width: 580px;
-      margin-bottom: 3rem;
-      font-weight: 300;
-    }
-
-    .body-text {
-      font-size: 15px;
-      line-height: 1.85;
-      color: var(--color-text-secondary);
-      margin-bottom: 1rem;
-      font-weight: 300;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--color-text-tertiary);
-      margin-bottom: 1.5rem;
-    }
-
-    .divider {
-      border: none;
-      border-top: 0.5px solid var(--color-border-tertiary);
-      margin: 2.75rem 0;
-    }
-
-    /* Model comparison grid */
-    .model-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--color-border-tertiary);
-      border: 0.5px solid var(--color-border-tertiary);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin: 2rem 0;
-    }
-
-    .model-cell { background: var(--color-bg-primary); padding: 1.25rem 1.5rem; }
-    .model-cell.header {
-      background: var(--color-bg-secondary);
-      font-size: 11px;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--color-text-tertiary);
-      padding: 0.75rem 1.5rem;
-    }
-    .model-cell .label { font-size: 13px; color: var(--color-text-tertiary); margin-bottom: 4px; }
-    .model-cell .value { font-size: 14px; font-weight: 500; line-height: 1.5; }
-    .model-cell .value.good { color: #0F6E56; }
-    .model-cell .value.bad { color: #993C1D; }
-
-    /* Stats */
-    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 2rem 0; }
-    .stat-card { background: var(--color-bg-secondary); border-radius: var(--radius-md); padding: 1.25rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-    .stat-card .number { font-family: 'DM Serif Display', serif; font-size: 34px; font-weight: 400; display: block; margin-bottom: 6px; line-height: 1; }
-    .stat-card .desc { font-size: 12px; color: var(--color-text-tertiary); line-height: 1.45; }
-
-    /* Pills */
-    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
-    .pill {
-      font-size: 13px;
-      padding: 6px 14px;
-      border-radius: 100px;
-      border: 0.5px solid var(--color-border-secondary);
-      color: var(--color-text-secondary);
-      background: var(--color-bg-secondary);
-    }
-
-    /* Commitment block */
-    .commitment-block {
-      border-left: 2px solid var(--color-border-secondary);
-      padding: 1rem 1.5rem;
-      margin: 2rem 0;
-      background: var(--color-bg-secondary);
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-    }
-    .commitment-block p { font-size: 15px; line-height: 1.8; color: var(--color-text-secondary); font-weight: 300; }
-
-    /* Risk grid */
-    .risk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 2rem 0; }
-    .risk-card {
-      border: 0.5px solid var(--color-border-tertiary);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-      background: var(--color-bg-primary);
-    }
-    .risk-card.featured { border-color: var(--color-border-secondary); background: var(--color-bg-secondary); }
-    .risk-card .risk-icon { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 0.75rem; display: block; }
-    .risk-card .risk-headline { font-size: 15px; font-weight: 500; margin-bottom: 0.5rem; line-height: 1.35; }
-    .risk-card .risk-body { font-size: 13px; line-height: 1.7; color: var(--color-text-secondary); font-weight: 300; }
-
-    /* Notice compare table */
-    .notice-compare {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1px;
-      background: var(--color-border-tertiary);
-      border: 0.5px solid var(--color-border-tertiary);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin: 2rem 0;
-    }
-    .notice-col { background: var(--color-bg-primary); padding: 1rem 1.25rem; }
-    .notice-col.header { background: var(--color-bg-secondary); padding: 0.65rem 1.25rem; }
-    .notice-col .notice-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-tertiary); }
-    .notice-col .notice-name { font-size: 14px; color: var(--color-text-primary); }
-    .notice-col .notice-val { font-size: 14px; font-weight: 500; margin-top: 2px; }
-    .notice-col .notice-val.good { color: #0F6E56; }
-    .notice-col .notice-val.bad { color: #993C1D; }
-    .notice-col.highlight .notice-val { color: #0F6E56; }
-
-    /* FAQ */
-    .faq-item { padding: 1.5rem 0; border-bottom: 0.5px solid var(--color-border-tertiary); }
-    .faq-item:last-child { border-bottom: none; }
-    .faq-q { font-size: 15px; font-weight: 500; margin-bottom: 0.6rem; line-height: 1.5; }
-    .faq-a { font-size: 14px; line-height: 1.85; color: var(--color-text-secondary); font-weight: 300; }
-
-    /* CTA */
-    .cta-block {
-      margin-top: 3rem;
-      padding: 2rem 2.25rem;
-      border: 0.5px solid var(--color-border-secondary);
-      border-radius: var(--radius-lg);
+    /* ── NAV ────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
-      flex-wrap: wrap;
+      padding: 0 2.5rem;
+      height: 56px;
+      background: var(--bg);
+      border-bottom: 1px solid transparent;
+      transition: border-color 300ms ease;
     }
-    .cta-text h3 { font-family: 'DM Serif Display', serif; font-size: 24px; font-weight: 400; margin-bottom: 4px; }
-    .cta-text p { font-size: 13px; color: var(--color-text-tertiary); }
-    .badge {
+    nav.scrolled { border-bottom-color: rgba(0,0,0,0.08); }
+
+    .nav-logo {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--dark);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-email {
+      font-size: 13px;
+      color: var(--body);
+      text-decoration: none;
+      position: relative;
+    }
+    .nav-email::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 250ms ease;
+    }
+    .nav-email:hover::after { transform: scaleX(1); }
+
+    .avail-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 12px;
-      padding: 5px 12px;
-      border-radius: 100px;
-      background: #E1F5EE;
-      color: #0F6E56;
+      font-size: 11px;
       font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--dark);
+      padding: 4px 10px;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 100px;
+    }
+
+    .pulse-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #1D9E75;
+      animation: pulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.45; transform: scale(0.75); }
+    }
+
+    /* ── HERO ───────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 0 2.5rem;
+      padding-top: 56px;
+      position: relative;
+    }
+
+    .hero-label {
+      position: absolute;
+      top: calc(56px + 2rem);
+      left: 2.5rem;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 2rem;
+      margin-top: -4vh;
+    }
+
+    .hero-headline {
+      font-size: clamp(64px, 8vw, 120px);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      margin-bottom: 2rem;
+    }
+
+    /* Hero intro row */
+    .hero-intro {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeUp 400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 100ms;
+    }
+
+    .hero-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #e8e5e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--body);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    /* When a real photo is swapped in */
+    .hero-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .hero-bubble {
+      position: relative;
+      background: var(--bg);
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--dark);
       white-space: nowrap;
     }
-    .dot { width: 6px; height: 6px; border-radius: 50%; background: #1D9E75; display: inline-block; flex-shrink: 0; }
+    .hero-bubble::before {
+      content: '';
+      position: absolute;
+      left: -7px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+      border-right: 7px solid rgba(0,0,0,0.10);
+    }
+    .hero-bubble::after {
+      content: '';
+      position: absolute;
+      left: -5.5px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-right: 6px solid var(--bg);
+    }
 
-    @media (max-width: 600px) {
-      h1 { font-size: 34px; }
-      .model-grid, .risk-grid, .notice-compare, .stat-row { grid-template-columns: 1fr; }
+    .hero-line1 { font-weight: 700; display: block; }
+    .hero-line2 { font-weight: 300; font-style: italic; display: block; }
+
+    .word {
+      display: inline-block;
+      opacity: 0.1;
+      transform: translateY(12px);
+      transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .word.visible { opacity: 1; transform: translateY(0); }
+
+    .hero-sub {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--body);
+      max-width: max-content;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeUp 500ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 1300ms;
+    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* Marquee */
+    .marquee-wrap {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.25rem 0;
+      overflow: hidden;
+      background: var(--dark);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+    .marquee-track span {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ffffff;
+      white-space: nowrap;
+      padding-right: 2rem;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SHARED SECTION STYLES ──────────────────────── */
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section-headline {
+      font-size: clamp(40px, 5vw, 72px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 600ms ease-out, transform 600ms ease-out;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── WHAT FRACTIONAL ────────────────────────────── */
+    .what-fractional {
+      padding: 8rem 2.5rem;
+    }
+    .what-inner { max-width: 1100px; margin: 0 auto; }
+
+    .focus-text {
+      font-size: clamp(26px, 3.8vw, 52px);
+      font-weight: 500;
+      line-height: 1.45;
+      max-width: 900px;
+      letter-spacing: -0.02em;
+      color: var(--dark);
+      margin-bottom: 4rem;
+    }
+    .focus-text .ghost {
+      opacity: 0.15;
+      transition: opacity 500ms ease;
+    }
+    .focus-text .ghost.lit { opacity: 0.35; }
+    .focus-text strong { font-weight: 700; }
+
+    /* Comparison rows */
+    .comparison { max-width: 760px; }
+
+    .compare-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .compare-col-head {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 1.5rem 0 0;
+    }
+    .compare-col-head:last-child { padding-left: 1.5rem; border-left: 1px solid var(--border); }
+    .compare-col-head.accent { color: var(--dark); }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 500ms ease, transform 500ms ease;
+    }
+    .compare-row.visible { opacity: 1; transform: translateY(0); }
+
+    .compare-cell {
+      padding: 1.5rem 1.5rem 1.5rem 0;
+    }
+    .compare-cell:last-child {
+      padding-left: 1.5rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .compare-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .compare-val {
+      font-size: 16px;
+      color: var(--body);
+      line-height: 1.4;
+    }
+    .compare-val.bold { font-weight: 600; color: var(--dark); }
+
+    /* ── STATS ──────────────────────────────────────── */
+    .stats-section { padding: 5rem 2.5rem; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      padding: 2rem 3rem 2rem 0;
+      border-right: 1px solid var(--border);
+      opacity: 0;
+      transform: scale(0.85);
+      transition: opacity 600ms ease-out, transform 600ms ease-out;
+    }
+    .stat-item:first-child { padding-left: 0; }
+    .stat-item:last-child { border-right: none; padding-right: 0; }
+    .stat-item.visible { opacity: 1; transform: scale(1); }
+
+    .stat-num {
+      font-size: clamp(80px, 10vw, 140px);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--dark);
+      letter-spacing: -0.04em;
+      display: block;
+    }
+    .stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.75rem;
+      display: block;
+    }
+
+    /* ── DARK SECTION ───────────────────────────────── */
+    .dark-section {
+      background: var(--dark);
+      color: #fff;
+      padding: 9rem 2.5rem;
+      text-align: center;
+    }
+    .dark-quote {
+      font-size: clamp(24px, 3.5vw, 42px);
+      font-weight: 400;
+      line-height: 1.45;
+      max-width: 800px;
+      margin: 0 auto 1.75rem;
+      letter-spacing: -0.02em;
+    }
+    .dark-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 2rem;
+      display: block;
+    }
+    .dark-body {
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto 1.25rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .dark-body:last-child { margin-bottom: 0; }
+    .dark-attr {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    /* ── ENGAGEMENT ─────────────────────────────────── */
+    .engagement-section { padding: 8rem 2.5rem; }
+    .engagement-inner { max-width: 1100px; margin: 0 auto; }
+
+    .engagement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4rem;
+      margin-top: 3.5rem;
+    }
+
+    .dot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 4px);
+      gap: 5px;
+      margin-bottom: 1.75rem;
+    }
+    .dot-grid span {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.15);
+      display: block;
+    }
+
+    .engage-label {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      text-transform: none;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+      display: block;
+      line-height: 1.2;
+    }
+    .engage-desc {
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--body);
+      line-height: 1.65;
+    }
+
+    /* ── TRANSPARENCY ───────────────────────────────── */
+    .transparency-section { padding: 7rem 2.5rem; }
+    .transparency-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .transparency-left .section-headline { margin-top: 0.75rem; }
+    .transparency-body {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--body);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    .transparency-body:last-child { margin-bottom: 0; }
+
+    /* ── FAQ ────────────────────────────────────────── */
+    .faq-section { padding: 7rem 2.5rem; }
+    .faq-inner { max-width: 720px; }
+
+    .faq-section .section-headline { margin-bottom: 3rem; }
+
+    .faq-item { border-bottom: 1px solid var(--border); }
+
+    .faq-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      gap: 1.5rem;
+    }
+    .faq-q {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.4;
+    }
+    .faq-icon {
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: transform 300ms ease;
+      line-height: 1;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 300ms ease;
+    }
+    .faq-body p {
+      font-size: 16px;
+      color: var(--body);
+      line-height: 1.8;
+      padding-bottom: 1.5rem;
+      max-width: 600px;
+      font-weight: 400;
+    }
+
+    /* ── CONTACT ────────────────────────────────────── */
+    .contact-section {
+      padding: 9rem 2.5rem;
+      text-align: center;
+    }
+    .contact-headline {
+      font-size: clamp(52px, 7vw, 100px);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: var(--dark);
+      margin-bottom: 2.5rem;
+    }
+    .contact-headline .italic-line {
+      font-weight: 300;
+      font-style: italic;
+      display: block;
+    }
+    .contact-email {
+      font-size: clamp(18px, 2.5vw, 32px);
+      font-weight: 500;
+      color: var(--dark);
+      text-decoration: none;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+    .contact-email::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 250ms ease;
+    }
+    .contact-email:hover::after { transform: scaleX(1); }
+
+    .contact-avail {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .contact-linkedin {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      position: relative;
+      display: inline-block;
+    }
+    .contact-linkedin::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 250ms ease;
+    }
+    .contact-linkedin:hover::after { transform: scaleX(1); }
+
+    .link-arrow {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+      margin-left: 7px;
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity 200ms ease, transform 200ms ease;
+    }
+    .contact-email:hover .link-arrow,
+    .contact-linkedin:hover .link-arrow {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.5rem; }
+      .hero, .what-fractional, .stats-section,
+      .dark-section, .engagement-section,
+      .transparency-section,
+      .transparency-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .faq-section,
+      .contact-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero-label { left: 1.5rem; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-item {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 2rem 0;
+      }
+      .stat-item:last-child { border-bottom: none; }
+      .engagement-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .compare-cell { padding: 1rem 1rem 1rem 0; }
+      .compare-cell:last-child { padding-left: 1rem; }
     }
   </style>
 </head>
 <body>
-<main class="page">
 
-  <p class="eyebrow">Ramya Thalmann · Creoscope</p>
-
-  <h1>The design partner<br><em>your product needs.</em></h1>
-
-  <p class="intro">I embed as your product designer — fully integrated into your team, participating in planning, working alongside your PMs and engineers, and taking full ownership of design from discovery through to implementation. You get a designer who owns the work end to end, without needing to be managed. The model is fractional — but the commitment isn't.</p>
-
-  <hr class="divider">
-
-  <!-- SECTION: The model -->
-  <p class="section-label">The model</p>
-  <h2>What "fractional" actually means</h2>
-  <p class="body-text">Fractional is not freelance. I don't wait for briefs, I don't deliver isolated assets, and I don't clock hours. I work the way a senior employee works, taking on the mental load of scoping, prioritising, and carrying design from discovery all the way through to implementation, just not at full-time capacity.</p>
-  <p class="body-text">Think of it as ~60% of a full-time senior designer: present on Slack, in planning sessions, in engineering syncs, in user research. Integrated, not adjacent.</p>
-
-  <div class="model-grid">
-    <div class="model-cell header">Traditional freelancer</div>
-    <div class="model-cell header">Fractional (this model)</div>
-    <div class="model-cell"><div class="label">Work structure</div><div class="value bad">Brief → delivery → done</div></div>
-    <div class="model-cell"><div class="label">Work structure</div><div class="value good">Ongoing ownership, embedded</div></div>
-    <div class="model-cell"><div class="label">Scope ownership</div><div class="value bad">Client defines the work</div></div>
-    <div class="model-cell"><div class="label">Scope ownership</div><div class="value good">I define, shape, and carry the work</div></div>
-    <div class="model-cell"><div class="label">Billing</div><div class="value bad">Hourly or per project</div></div>
-    <div class="model-cell"><div class="label">Billing</div><div class="value good">Monthly retainer, outcome-oriented</div></div>
-    <div class="model-cell"><div class="label">Team integration</div><div class="value bad">External vendor</div></div>
-    <div class="model-cell"><div class="label">Team integration</div><div class="value good">In Slack, in standups, in planning</div></div>
-    <div class="model-cell"><div class="label">Strategic input</div><div class="value bad">Rarely</div></div>
-    <div class="model-cell"><div class="label">Strategic input</div><div class="value good">Always. I help shape the roadmap.</div></div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- SECTION: Why it works -->
-  <p class="section-label">Why it works for early-stage startups</p>
-  <h2>Design that thinks for itself — and ships.</h2>
-  <p class="body-text">Most early-stage teams don't need more design hours. They need someone senior enough to figure out what to design, and experienced enough to carry it through without hand-holding. That combination of strategic ownership and hands-on execution is exactly what's hard to find, and what this model is built around.</p>
-  <p class="body-text">I've done this with multiple early-stage SaaS companies. I join, get up to speed fast, define what needs to be built and why, and take it all the way through to implementation without needing to be managed along the way.</p>
-
-  <div class="stat-row">
-    <div class="stat-card">
-      <span class="number">10+</span>
-      <span class="desc">Years of product design experience</span>
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="/" class="nav-logo">Creoscope</a>
+    <div class="nav-right">
+      <a href="mailto:ramya.thalmann@gmail.com" class="nav-email" target="_blank" rel="noopener noreferrer">ramya.thalmann@gmail.com</a>
+      <span class="avail-pill"><span class="pulse-dot"></span>Available</span>
     </div>
-    <div class="stat-card">
-      <span class="number">Forbes #1</span>
-      <span class="desc">My design rated #1 in analytics among all ATS platforms</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+<div class="hero-content">
+      <div class="hero-intro">
+        <div class="hero-avatar"><img src="RT.jpg" alt="Ramya Thalmann"></div>
+        <div class="hero-bubble">Hi, I'm Ramya</div>
+      </div>
+      <h1 class="hero-headline">
+        <span class="hero-line1" id="hero-line1">The design partner</span>
+        <span class="hero-line2" id="hero-line2">your product needs.</span>
+      </h1>
+      <p class="hero-sub">I embed as your senior product designer — without the full-time overhead.</p>
     </div>
-    <div class="stat-card">
-      <span class="number">0→1</span>
-      <span class="desc">Products taken from concept to market-ready</span>
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span>·&nbsp;&nbsp;&nbsp;B2B SaaS&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;Fintech&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;HR Tech&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;0→1 Products&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;Design Systems&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;10+ Years&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;Deel&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;Forbes #1 Rated&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;Design Advisor at Antler&nbsp;&nbsp;&nbsp;</span>
+        <span>·&nbsp;&nbsp;&nbsp;B2B SaaS&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;Fintech&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;HR Tech&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;0→1 Products&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;Design Systems&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;10+ Years&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;Deel&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;Forbes #1 Rated&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;Design Advisor at Antler&nbsp;&nbsp;&nbsp;</span>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <p class="body-text">With 10+ years in product design and 8+ focused on B2B SaaS across fintech, HR tech, e-signing, and compliance, I'm currently leading product design at Deel. The analytics platform I designed from scratch at Teamtailor was recognised by Forbes as #1 in analytics and reporting among all applicant tracking systems in 2024. I've worked across early-stage startups and established products, so I know what it takes to ship in both environments and how to hit the ground running regardless of where a product is in its journey.</p>
+  <!-- WHAT FRACTIONAL MEANS -->
+  <section class="what-fractional">
+    <div class="what-inner">
+      <p class="focus-text" id="focus-text"><span class="ghost">Fractional is</span> <strong>not freelance.</strong> <span class="ghost">I don't wait for briefs — I join your team,</span> own the <strong>design function</strong>, <span class="ghost">and ship.</span></p>
 
-  <div class="pill-row">
-    <span class="pill">0→1 product design</span>
-    <span class="pill">B2B SaaS</span>
-    <span class="pill">Fintech & HR tech</span>
-    <span class="pill">Design systems</span>
-    <span class="pill">Research & strategy</span>
-    <span class="pill">Cross-functional collaboration</span>
-    <span class="pill">PM & engineering alignment</span>
-  </div>
-
-  <hr class="divider">
-
-  <!-- SECTION: Risk -->
-  <p class="section-label">Risk & commitment</p>
-  <h2>All the commitment you need.<br>None you don't.</h2>
-  <p class="body-text">The structure of this engagement is designed entirely around what gives you confidence. There's no fixed template. We agree on terms that feel right for you, and adjust them as the relationship grows. The goal is for you to feel as secure in this as you would with a full-time hire, with none of the rigidity that comes with one.</p>
-
-  <div class="risk-grid">
-    <div class="risk-card featured">
-      <span class="risk-icon">Getting started</span>
-      <div class="risk-headline">Start on whatever terms feel right</div>
-      <div class="risk-body">Short trial, month-to-month, or straight into a longer commitment. We structure the beginning around your comfort level, not a fixed formula.</div>
+      <div class="comparison">
+        <div class="compare-header">
+          <div class="compare-col-head">Traditional freelancer</div>
+          <div class="compare-col-head accent">Fractional (this model)</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">
+            <div class="compare-label">Work structure</div>
+            <div class="compare-val">Brief → delivery → done</div>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-label">Work structure</div>
+            <div class="compare-val bold">Ongoing ownership, embedded</div>
+          </div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">
+            <div class="compare-label">Scope ownership</div>
+            <div class="compare-val">Client defines the work</div>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-label">Scope ownership</div>
+            <div class="compare-val bold">I define, shape, and carry it</div>
+          </div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">
+            <div class="compare-label">Billing</div>
+            <div class="compare-val">Hourly or per project</div>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-label">Billing</div>
+            <div class="compare-val bold">Monthly retainer, outcome-oriented</div>
+          </div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">
+            <div class="compare-label">Team integration</div>
+            <div class="compare-val">External vendor</div>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-label">Team integration</div>
+            <div class="compare-val bold">In Slack, in planning, in Figma</div>
+          </div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell">
+            <div class="compare-label">Strategic input</div>
+            <div class="compare-val">Rarely</div>
+          </div>
+          <div class="compare-cell">
+            <div class="compare-label">Strategic input</div>
+            <div class="compare-val bold">Always — I help shape the roadmap</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="risk-card">
-      <span class="risk-icon">As confidence builds</span>
-      <div class="risk-headline">Full employment-equivalent terms if you want them</div>
-      <div class="risk-body">Whenever you want the security of a longer mutual commitment, matching what you'd have with a full-time hire, I'm fully open to that.</div>
+  </section>
+
+  <!-- DARK QUOTE -->
+  <section class="dark-section reveal">
+    <span class="dark-eyebrow">Why it works for early-stage startups</span>
+    <p class="dark-quote">"Most early-stage teams don't need more design hours. They need someone senior enough to figure out what to design."</p>
+    <p class="dark-body">That combination of strategic ownership and hands-on execution is exactly what's hard to find, and what this model is built around.</p>
+    <p class="dark-body">I've done this with multiple early-stage SaaS companies. I join, get up to speed fast, define what needs to be built and why, and take it all the way through to implementation without needing to be managed along the way.</p>
+  </section>
+
+  <!-- ENGAGEMENT MODEL -->
+  <section class="engagement-section reveal">
+    <div class="engagement-inner">
+      <span class="section-eyebrow">Engagement model</span>
+      <h2 class="section-headline">All the commitment<br>you need. On your terms.</h2>
+      <div class="engagement-grid">
+        <div class="engage-item">
+          <span class="engage-label">Start on your terms</span>
+          <p class="engage-desc">Short trial, month-to-month, or straight into a longer commitment. We structure the beginning around your comfort level, not a fixed formula.</p>
+        </div>
+        <div class="engage-item">
+          <span class="engage-label">Grows with confidence</span>
+          <p class="engage-desc">Whenever you want the security of longer mutual terms — matching what you'd get with a full-time hire — I'm fully open to that.</p>
+        </div>
+        <div class="engage-item">
+          <span class="engage-label">Long-term by design</span>
+          <p class="engage-desc">I'm selective about who I work with. I'm looking to embed deeply and grow with a company over time — not rotate through clients.</p>
+        </div>
+      </div>
     </div>
-    <div class="risk-card">
-      <span class="risk-icon">My intention</span>
-      <div class="risk-headline">Long-term partnership, not a short engagement</div>
-      <div class="risk-body">I'm selective about who I work with because I'm looking to embed deeply and grow with a company over time, not rotate through clients.</div>
+  </section>
+
+  <!-- TRANSPARENCY -->
+  <section class="transparency-section reveal">
+    <div class="transparency-inner">
+      <div class="transparency-left">
+        <span class="section-eyebrow">On commitment</span>
+        <h2 class="section-headline">Transparency is the model,<br>not a caveat.</h2>
+      </div>
+      <div class="transparency-right">
+        <p class="transparency-body">I work with a small number of clients in parallel, and I'm upfront about that. It's a deliberate choice: working across different products keeps me sharper, more current, and full of perspective that a single-company environment rarely provides. The patterns I see across products, teams, and problems make me a better designer for each of them. You always know where you stand, and our engagement is built on outcomes, not presence.</p>
+        <p class="transparency-body">What you get is my full professional investment in understanding your product, your users, your technical constraints, and your roadmap. Experienced senior designers create outsized value through decisions, not hours logged.</p>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <p class="body-text">In practice, you get more flexibility than a traditional hire, with the same depth of commitment. The terms adapt to you. The quality and ownership don't.</p>
-
-  <div class="notice-compare">
-    <div class="notice-col header"><span class="notice-label">Arrangement</span></div>
-    <div class="notice-col header"><span class="notice-label">Commitment terms</span></div>
-    <div class="notice-col header"><span class="notice-label">Cost of getting it wrong</span></div>
-
-    <div class="notice-col"><span class="notice-name">Full-time employee</span></div>
-    <div class="notice-col"><span class="notice-val bad">Fixed, hard to change</span></div>
-    <div class="notice-col"><span class="notice-val bad">Very high</span></div>
-
-    <div class="notice-col"><span class="notice-name">Traditional freelancer</span></div>
-    <div class="notice-col"><span class="notice-val" style="color: var(--color-text-secondary);">Per project</span></div>
-    <div class="notice-col"><span class="notice-val" style="color: var(--color-text-secondary);">Low, but shallow work</span></div>
-
-    <div class="notice-col"><span class="notice-name" style="font-weight: 500;">Fractional (this model)</span></div>
-    <div class="notice-col"><span class="notice-val good">Flexible, adapts to you</span></div>
-    <div class="notice-col"><span class="notice-val good">Very low</span></div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- SECTION: Commitment -->
-  <p class="section-label">On commitment</p>
-  <h2>Transparency is the model, not a caveat.</h2>
-
-  <div class="commitment-block">
-    <p>I work with a small number of clients in parallel, and I'm upfront about that. It's a deliberate choice: working across different products keeps me sharper, more current, and full of perspective that a single-company environment rarely provides. The patterns I see across products, teams, and problems make me a better designer for each of them. You always know where you stand, and our engagement is built on outcomes, not presence.</p>
-  </div>
-
-  <p class="body-text">What you get is my full professional investment in understanding your product, your users, your technical constraints, and your roadmap. Experienced senior designers create outsized value through decisions, not hours logged.</p>
-
-  <hr class="divider">
-
-  <!-- SECTION: FAQ -->
-  <p class="section-label">FAQ</p>
-
-  <div class="faq-item">
-    <p class="faq-q">Isn't this just freelancing with a different name?</p>
-    <p class="faq-a">No. A freelancer waits for a brief, delivers a defined output, and moves on. I join your team. I'm in your planning sessions, I help define what needs to be designed and why, I work with your engineers through implementation, and I take responsibility for the design function, not just individual deliverables. The mental ownership is entirely different.</p>
-  </div>
-
-  <div class="faq-item">
-    <p class="faq-q">What if we need you and you're tied up with another client?</p>
-    <p class="faq-a">This rarely happens in practice because the model is async-friendly and output-oriented rather than time-bound. I'm available on Slack for quick decisions and present in the meetings that matter. I keep my client roster intentionally small and only take on engagements where I know I can deliver meaningfully.</p>
-  </div>
-
-  <div class="faq-item">
-    <p class="faq-q">Will you actually develop deep context about our product?</p>
-    <p class="faq-a">Yes, and this is where the fractional model differs from consulting. I'm not parachuting in for a sprint. I embed over months, building up institutional knowledge about your users, your technical architecture, your design decisions and why they were made. Over time I become one of the people who knows your product best.</p>
-  </div>
-
-  <div class="faq-item">
-    <p class="faq-q">What if this doesn't work out?</p>
-    <p class="faq-a">We agree on terms that feel right for you from the start, whether that's a short trial or jumping straight into a longer commitment. The structure is designed to give you confidence, not lock you in. I'm selective about who I work with precisely because I'm looking for this to work long-term.</p>
-  </div>
-
-  <div class="faq-item">
-    <p class="faq-q">What if we want more security that you won't just leave?</p>
-    <p class="faq-a">Commitment terms are fully flexible, including matching the notice period you'd have with a full-time employee, whenever that feels right. More importantly, I'm here because I want a long-term engagement. I'm selective about the companies I work with precisely because I'm not looking for short rotations. I'm looking for products I believe in and want to grow with.</p>
-  </div>
-
-  <div class="faq-item">
-    <p class="faq-q">How is this better than hiring a full-time designer?</p>
-    <p class="faq-a">A full-time senior designer who can self-direct, own the design function, and work well with engineers is genuinely hard to find and expensive to hire. This model gives you exactly that, structured in a way that works for where you are right now, with flexibility to evolve as you grow.</p>
-  </div>
-
-  <div class="faq-item">
-    <p class="faq-q">How does billing work?</p>
-    <p class="faq-a">A fixed monthly retainer, paid in advance. No hourly tracking, no project-by-project negotiation. You get consistent access to me and I plan my time around your needs. The fee reflects a roughly 60% capacity engagement relative to a full-time senior designer salary, making the value straightforward to benchmark.</p>
-  </div>
-
-  <div class="faq-item">
-    <p class="faq-q">Have you done this before?</p>
-    <p class="faq-a">Yes. I run Creoscope, my independent design practice, specifically structured around this model. I've worked this way with SaaS companies across e-signing, document management, and operations software, taking products from early concept through to production. It's not an experiment; it's how I work.</p>
-  </div>
-
-  <div class="faq-item">
-    <p class="faq-q">What happens if you eventually want to hire a full-time designer?</p>
-    <p class="faq-a">That's a great outcome and I'd help make it happen. I've helped startups hire and onboard designers before, so I know what good looks like at different stages. By the time you're ready, I'll know your product, your design system, and exactly what the role needs to look like. I can help you define the brief, review candidates, and ensure a smooth handover. The fractional model is often the best way to get to that point with strong foundations already in place.</p>
-  </div>
-
-  <div class="faq-item">
-    <p class="faq-q">What does "integrated" actually look like day-to-day?</p>
-    <p class="faq-a">I join relevant planning and sprint ceremonies, I'm reachable on Slack for async questions and quick feedback, I attend product reviews and key stakeholder sessions, and I work directly with engineers during implementation. You won't need to brief me. I'll stay across what's happening and flag design decisions proactively.</p>
-  </div>
-
-  <div class="cta-block">
-    <div class="cta-text">
-      <h3>Let's talk about your product.</h3>
-      <p>ramya.thalmann@gmail.com · linkedin.com/in/ramya-v-t</p>
+  <!-- FAQ -->
+  <section class="faq-section reveal">
+    <div class="faq-inner">
+      <h2 class="section-headline">Common questions.</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-q">Isn't this just freelancing with a different name?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-body">
+            <p>No. A freelancer waits for a brief, delivers a defined output, and moves on. I join your team. I'm in your planning sessions, I help define what needs to be designed and why, I work with your engineers through implementation, and I take responsibility for the design function — not just individual deliverables. The mental ownership is entirely different.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-q">What if we need you and you're tied up with another client?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-body">
+            <p>This rarely happens in practice because the model is async-friendly and output-oriented rather than time-bound. I keep my client roster intentionally small and only take on engagements where I know I can deliver meaningfully.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-q">Will you develop deep context about our product?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-body">
+            <p>Yes, and this is where the fractional model differs from consulting. I'm not parachuting in for a sprint. I embed over months, building up institutional knowledge about your users, your technical architecture, and your design decisions. Over time I become one of the people who knows your product best.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-q">How is this better than hiring full-time?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-body">
+            <p>A full-time senior designer who can self-direct, own the design function, and work well with engineers is genuinely hard to find and expensive to hire. This model gives you exactly that, structured in a way that works for where you are right now — with flexibility to evolve as you grow.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-q">How does billing work?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-body">
+            <p>A fixed monthly retainer. No hourly tracking, no project-by-project negotiation. You get consistent access and I plan my time around your needs. The fee reflects a roughly 60% capacity engagement relative to a full-time senior designer salary — straightforward to benchmark.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-q">What happens when you want to hire full-time eventually?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-body">
+            <p>That's a great outcome and I'd help make it happen. By the time you're ready, I'll know your product, your design system, and exactly what the role needs to look like. I can help define the brief, review candidates, and ensure a smooth handover. Or if I'm tempted, I can consider joining full-time. :)</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-q">What does "integrated" actually look like day-to-day?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-body">
+            <p>I join relevant planning sessions, I'm reachable on Slack for async questions and quick feedback, I attend product/design reviews and key stakeholder sessions, and I work directly with engineers during implementation. You won't need to brief me — I'll stay across what's happening and flag design decisions proactively.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <span class="badge"><span class="dot"></span>Available for new engagements</span>
-  </div>
+  </section>
 
-</main>
+  <!-- CONTACT -->
+  <section class="contact-section reveal">
+    <h2 class="contact-headline">
+      Let's talk about<br>
+      <span class="italic-line">your product.</span>
+    </h2>
+    <div>
+      <a href="mailto:ramya.thalmann@gmail.com" class="contact-email" target="_blank" rel="noopener noreferrer">ramya.thalmann@gmail.com<span class="link-arrow"><svg width="1em" height="1em" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="0" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><polyline points="8,1 13,5 8,9" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+    </div>
+<a href="https://linkedin.com/in/ramya-v-t" target="_blank" rel="noopener noreferrer" class="contact-linkedin">linkedin.com/in/ramya-v-t<span class="link-arrow"><svg width="1em" height="1em" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="0" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><polyline points="8,1 13,5 8,9" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+  </section>
+
+  <script>
+    // Nav scroll border
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    // Hero word-by-word reveal
+    function wrapWords(el, baseDelay) {
+      const raw = el.textContent.trim();
+      el.innerHTML = raw.split(/\s+/).map((w, i) =>
+        `<span class="word" style="transition-delay:${baseDelay + i * 60}ms">${w}</span>`
+      ).join(' ');
+      return el.querySelectorAll('.word').length;
+    }
+
+    setTimeout(() => {
+      const line1 = document.getElementById('hero-line1');
+      const line2 = document.getElementById('hero-line2');
+      const n = wrapWords(line1, 0);
+      wrapWords(line2, n * 60);
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.word').forEach(w => w.classList.add('visible'));
+      });
+    }, 80);
+
+    // Generic reveal on scroll
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+
+
+    // Comparison rows stagger
+    const compareRows = document.querySelectorAll('.compare-row');
+    const compareObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          compareRows.forEach((r, i) => setTimeout(() => r.classList.add('visible'), i * 80));
+          compareObs.disconnect();
+        }
+      });
+    }, { threshold: 0.1 });
+    if (compareRows[0]) compareObs.observe(compareRows[0]);
+
+    // Ghost text: each span gets its own observer, staggered by DOM index
+    document.querySelectorAll('.ghost').forEach((s, i) => {
+      const o = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            setTimeout(() => e.target.classList.add('lit'), i * 80);
+            o.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.5, rootMargin: '0px 0px -10% 0px' });
+      o.observe(s);
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item');
+        const body = item.querySelector('.faq-body');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-body').style.maxHeight = '0';
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
