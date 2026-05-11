@@ -423,7 +423,7 @@
       font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.6);
       margin-bottom: 2rem;
       display: block;
     }
@@ -433,7 +433,7 @@
       line-height: 1.7;
       max-width: 640px;
       margin: 0 auto 1.25rem;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.6);
     }
     .dark-body:last-child { margin-bottom: 0; }
     .dark-attr {
@@ -558,13 +558,14 @@
     .contact-section {
       padding: 9rem 2.5rem;
       text-align: center;
+      background: var(--dark);
     }
     .contact-headline {
       font-size: clamp(52px, 7vw, 100px);
       font-weight: 700;
       line-height: 1.0;
       letter-spacing: -0.03em;
-      color: var(--dark);
+      color: #ffffff;
       margin-bottom: 2.5rem;
     }
     .contact-headline .italic-line {
@@ -575,7 +576,7 @@
     .contact-email {
       font-size: clamp(18px, 2.5vw, 32px);
       font-weight: 500;
-      color: var(--dark);
+      color: #ffffff;
       text-decoration: none;
       position: relative;
       display: inline-block;
@@ -602,12 +603,12 @@
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: rgba(255,255,255,0.45);
       margin-bottom: 1.25rem;
     }
     .contact-linkedin {
       font-size: 13px;
-      color: var(--muted);
+      color: rgba(255,255,255,0.55);
       text-decoration: none;
       position: relative;
       display: inline-block;
@@ -640,6 +641,10 @@
     }
 
     /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 560px) {
+      .nav-email { display: none; }
+    }
+
     @media (max-width: 768px) {
       nav { padding: 0 1.5rem; }
       .hero, .what-fractional, .stats-section,
