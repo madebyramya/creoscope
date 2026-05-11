@@ -162,7 +162,7 @@ body {
 .hero-inner {
   display: flex;
   align-items: center;
-  gap: 64px;
+  gap: 110px;
 }
 .hero-left { flex: none; }
 .hero-agenda {
@@ -419,13 +419,20 @@ body {
 .spectrum-wrap {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 16px;
+  margin-top: 36px;
 }
 
 .spectrum-panels {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
+}
+
+.spectrum-thumbs {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .sp-side {
@@ -438,9 +445,9 @@ body {
 .sp-cool .sp-words { justify-content: flex-end; }
 
 .sp-ref-label {
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 600;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--ink-faint);
   margin-bottom: 6px;
@@ -452,16 +459,16 @@ body {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 100px;
-  padding: 5px 13px;
-  font-size: 13px;
+  padding: 7px 16px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--ink-soft);
   letter-spacing: -0.01em;
 }
 
 .sp-thumb {
-  width: 100%;
-  height: 100px;
+  width: 42%;
+  height: 280px;
   border-radius: var(--r-lg);
   border: 1px solid var(--border);
   background: var(--cream-dark);
@@ -482,7 +489,7 @@ body {
 .spectrum-bar-area { display: flex; flex-direction: column; gap: 10px; }
 
 .spectrum-bar {
-  height: 8px;
+  height: 14px;
   border-radius: 100px;
   background: linear-gradient(
     to right,
@@ -500,9 +507,9 @@ body {
 .spectrum-pole-labels {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-faint);
 }
@@ -511,18 +518,18 @@ body {
 .elva-mkr {
   position: absolute;
   left: 22%;
-  bottom: 100%;
+  top: 100%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   pointer-events: none;
-  padding-bottom: 2px;
+  padding-top: 2px;
 }
 
 .elva-mkr-inner {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   gap: 3px;
   opacity: 0;
@@ -531,11 +538,11 @@ body {
 .elva-mkr-pill {
   background: var(--orange);
   color: white;
-  font-size: 9px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 3px 10px;
+  padding: 6px 16px;
   border-radius: 100px;
   box-shadow: 0 2px 8px rgba(232,98,42,0.4);
   white-space: nowrap;
@@ -543,14 +550,14 @@ body {
 
 .elva-mkr-stem {
   width: 1.5px;
-  height: 10px;
+  height: 14px;
   background: var(--orange);
   opacity: 0.5;
 }
 
 @keyframes elvaAppear {
-  0%   { opacity: 0; transform: translateY(6px) scale(0.8); }
-  65%  { opacity: 1; transform: translateY(-2px) scale(1.07); }
+  0%   { opacity: 0; transform: translateY(-6px) scale(0.8); }
+  65%  { opacity: 1; transform: translateY(2px) scale(1.07); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -1211,8 +1218,8 @@ body {
 ══════════════════════════════════ */
 #s-next { background: var(--orange); }
 .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.next-eye { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-.next-eye::before { content: ''; width: 18px; height: 1.5px; background: currentColor; display: inline-block; }
+.next-eye { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+
 .next-h {
   font-size: clamp(34px, 4.5vw, 56px);
   font-weight: 600;
@@ -1222,7 +1229,9 @@ body {
   margin-bottom: 18px;
 }
 .next-h em { font-style: italic; opacity: 0.45; }
-.next-body { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 32px; }
+.next-body { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 480px; }
+.next-by { font-size: 15px; color: rgba(255,255,255,0.5); font-weight: 400; letter-spacing: -0.01em; }
+.next-by strong { color: white; font-weight: 600; }
 .next-btn {
   display: inline-flex; align-items: center; gap: 8px;
   background: white; color: var(--orange);
@@ -1401,26 +1410,20 @@ body {
 <!-- ══ SLIDE — BRAND FEELING ══ -->
 <section class="slide" id="s-brand-feeling" data-step="0">
   <div class="eyebrow">Brand feeling</div>
-  <h2 class="bf-h">Relocation is one of the most emotional moments in someone's career. <span>The product should feel that way.</span></h2>
 
   <div class="spectrum-wrap">
-    <div class="spectrum-panels">
 
-      <!-- Warm side -->
+    <!-- Ref + chips sit directly above the bar -->
+    <div class="spectrum-panels">
       <div class="sp-side sp-warm">
         <div class="bf-warm-content">
           <div class="sp-ref-label">Airbnb</div>
           <div class="sp-words">
-            <span class="sp-word">Trust</span>
+            <span class="sp-word">Friendly</span>
             <span class="sp-word">Tailored</span>
           </div>
         </div>
-        <div class="sp-thumb bf-warm-thumb">
-          <span class="sp-thumb-lbl">Video placeholder</span>
-        </div>
       </div>
-
-      <!-- Cool side -->
       <div class="sp-side sp-cool">
         <div class="bf-cool-content">
           <div class="sp-ref-label">Revolut</div>
@@ -1429,11 +1432,7 @@ body {
             <span class="sp-word">Precision</span>
           </div>
         </div>
-        <div class="sp-thumb bf-cool-thumb">
-          <span class="sp-thumb-lbl">Video placeholder</span>
-        </div>
       </div>
-
     </div>
 
     <!-- Spectrum bar -->
@@ -1451,6 +1450,17 @@ body {
         <span>Cool</span>
       </div>
     </div>
+
+    <!-- Thumbnails below the bar -->
+    <div class="spectrum-thumbs">
+      <div class="sp-thumb bf-warm-thumb">
+        <video src="Airbnb.mov" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;"></video>
+      </div>
+      <div class="sp-thumb bf-cool-thumb">
+        <video src="Revolut.mov" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;"></video>
+      </div>
+    </div>
+
   </div>
 
   <div class="reveal-hint">click or press → to reveal</div>
@@ -1934,21 +1944,12 @@ body {
 
 
 <!-- ══ SLIDE 6 — NEXT STEPS ══ -->
-<section class="slide" id="s-next">
-  <div class="next-grid">
-    <div>
-      <div class="next-eye">05 — Next steps</div>
-      <h2 class="next-h">Let's build this<br><em>together.</em></h2>
-      <p class="next-body">This is a starting point, not a final word. The direction shows what's possible — and opens a real conversation about how to get there. Everything stays within Elva's existing brand.</p>
-      <button class="next-btn">Talk through next steps →</button>
-    </div>
-    <div class="delivs">
-      <div class="deliv"><div class="deliv-n">1</div><div><h4>Design system foundations</h4><p>Token-based colour, spacing, radius, and motion — a shared language that scales with the product.</p></div></div>
-      <div class="deliv"><div class="deliv-n">2</div><div><h4>Core screen redesigns</h4><p>Timeline, tasks, home — the 3–4 screens employees touch most, elevated with the new direction.</p></div></div>
-      <div class="deliv"><div class="deliv-n">3</div><div><h4>Interaction &amp; motion library</h4><p>The micro-animations and state changes that make the product feel alive — documented and reusable.</p></div></div>
-      <div class="deliv"><div class="deliv-n">4</div><div><h4>Component library</h4><p>Figma components built on the system — ship confidently without breaking the craft.</p></div></div>
-    </div>
-  </div>
+<section class="slide cover-slide" id="s-next">
+  <div class="next-eye">05 — Next steps</div>
+  <h2 class="next-h">Let's build this<br><em>together.</em></h2>
+  <p class="next-body">This is a starting point, not a final word. The direction shows what's possible — and opens a real conversation about how to get there.</p>
+  <div class="cover-rule" style="background:rgba(255,255,255,0.3);"></div>
+  <p class="next-by">by <strong>Ramya Thalmann</strong></p>
 </section>
 
 </div><!-- /deck -->
